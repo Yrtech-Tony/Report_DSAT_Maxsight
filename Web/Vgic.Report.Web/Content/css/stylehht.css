@@ -1,0 +1,338 @@
+﻿.menu h4 {
+    color: #535353;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 800;
+}
+
+.menu .english {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.menu .list-group-item {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.comm-table-div {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+    .comm-table-div table tr {
+        /*position: relative;*/
+    }
+
+    .comm-table-div .piao {
+        overflow: hidden;
+        background-color: #EAF0F9;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .comm-table-div .pzhan {
+    }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .comm-table-div .pzhan {
+    }
+}
+
+.comm-table-div .piao a {
+    color: #676767;
+}
+
+    .comm-table-div .piao a:hover {
+        color: #6A98D1;
+    }
+
+.comm-table-div .table-bordered > tbody > tr > th {
+    text-align: center;
+    color: #fff;
+    background-color: #7eaee8; /*rgb(34, 116, 172)*/
+}
+
+.comm-table-div .table > tbody > tr > td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.switch {
+    width: 115px;
+}
+
+    .switch a {
+        width: 115px;
+        height: 40px;
+        background: url(../images/switch.png) no-repeat center center;
+        position: absolute;
+        left: 15px;
+        cursor: pointer;
+    }
+
+
+/*验证提示*/
+.chkHint {
+    color: red;
+    display: none;
+}
+
+.error-msg, .format-error {
+    color: red;
+    display: none;
+}
+
+#pageUl a {
+    cursor: pointer;
+}
+
+
+.highlight {
+    background: yellow;
+    color: red;
+}
+
+.prelight {
+    background: blue;
+    color: white;
+}
+
+.media-w {
+    min-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 15px;
+}
+
+.media-body i {
+    margin-left: 20px;
+}
+
+.media-list li.media {
+    margin: 20px auto;
+    border-bottom: #ccc dashed 1px;
+}
+
+.close-img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.loading {
+    background: url("theme/usmanhalalit/img/ajax-loaders/ajax-loader-5.gif") no-repeat center;
+}
+
+.upload-item {
+    padding-left: 0px !important;
+}
+
+.flow {
+    position: relative;
+}
+
+    .flow img {
+        float: right;
+    }
+
+/**
+  以下都是指导手册的样式
+ */
+.organizational-table {
+    text-align: center;
+}
+
+    .organizational-table th {
+        background-color: rgb(0,51,132);
+        color: white;
+        text-align: center;
+        font-weight: 400;
+    }
+
+    .organizational-table ul {
+        padding-left: 20px;
+    }
+
+    .organizational-table li, .organizational-table span, .organizational-table p {
+        text-align: justify;
+        text-justify: inter-ideograph;
+    }
+
+    .organizational-table h4, .organizational-table h5 {
+        text-align: left;
+    }
+
+    .organizational-table td {
+        vertical-align: middle !important;
+    }
+
+.position-table {
+}
+
+    .position-table tr td:first-child {
+        background-color: #a6a6a6;
+        color: white;
+        width: 120px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+.hold-table {
+    background-color: rgb(242,242,242);
+    font-size: 14px;
+}
+
+    .hold-table th {
+        background-color: rgb(79,129,189);
+        color: white;
+        margin-bottom: 10px;
+    }
+
+
+.key-position-table {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+    .key-position-table tr td {
+        border: none;
+        border-bottom: solid 5px #fff;
+        background-color: rgb(242,242,242);
+    }
+
+        .key-position-table tr td:first-child {
+            background-color: rgb(55,96,146);
+            text-align: center;
+            vertical-align: middle;
+            width: 85px;
+            color: #eee;
+            font-weight: 600;
+        }
+
+    .key-position-table ul {
+        list-style: decimal;
+    }
+
+.vertical-td {
+    text-align: center;
+    vertical-align: middle;
+    display: block;
+    padding: 35px;
+    line-height: 40px;
+    display: block;
+}
+
+.key-position-table td table {
+    width: 100%;
+}
+
+    .key-position-table td table td {
+        border: none;
+        border-bottom: solid 1px #fff;
+        border-right: solid 1px #fff;
+        background-color: rgb(242,242,242) !important;
+        padding: 6px 8px;
+        color: #333 !important;
+        font-weight: normal !important;
+    }
+
+.table-striped-blue {
+    text-align: center;
+    width: 100%;
+}
+
+    .table-striped-blue th {
+        background-color: rgb(31,78,121);
+        color: white;
+        text-align: center;
+        vertical-align: middle !important;
+        font-weight: 400;
+    }
+
+    .table-striped-blue ul {
+        padding-left: 20px;
+    }
+
+    .table-striped-blue li, .table-striped-blue span, .table-striped-blue p {
+        text-align: justify !important;
+        text-justify: inter-ideograph !important;
+    }
+
+    .table-striped-blue h4, .table-striped-blue h5 {
+        text-align: left;
+    }
+
+    .table-striped-blue td {
+        vertical-align: middle !important;
+        text-align: left;
+    }
+
+    .table-striped-blue tr:nth-of-type(odd) {
+        background-color: rgb(233,236,244);
+    }
+
+    .table-striped-blue tr:nth-of-type(even) {
+        background-color: rgb(208,215,232);
+    }
+
+.table-simple-gray {
+    text-align: left;
+}
+
+    .table-simple-gray th {
+        background-color: #bebebe;
+    }
+
+    .table-simple-gray td {
+        background-color: #f1f1f1;
+    }
+
+.table-simple-gray2 {
+    text-align: left;
+}
+
+    .table-simple-gray2 th {
+        background-color: #bebebe;
+    }
+
+    .table-simple-gray2 td {
+        background-color: #fff;
+    }
+
+.table-blue-head {
+    text-align: left;
+}
+
+    .table-blue-head th {
+        background-color: rgb(31,78,121);
+        color: white;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+    .table-blue-head td {
+        background-color: #fff;       
+    }
+
+.table-center td, .table-center th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.first-td{
+    background-color:rgb(210,222,239) !important;
+    vertical-align:middle !important;
+    text-align:center !important;
+    border: solid 1px #ccc!important;
+}
+
+.table-body-gray td{
+    background-color: rgb(217,217,217); 
+    border:solid 1px #fff !important;
+}

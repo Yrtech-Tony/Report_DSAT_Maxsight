@@ -1,0 +1,356 @@
+﻿@{
+    Layout = "~/Views/QSP/_QSPLayout.cshtml";
+    ViewBag.Title = "销售流程质量评估-申诉结果反馈视频";
+    var curYear = DateTime.Now.Year;
+}
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/crypto/crypto.js"></script>
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/hmac/hmac.js"></script>
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/sha1/sha1.js"></script>
+    <script src="~/Scripts/oss-upload-direct/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="~/Scripts/oss-upload-direct/lib/base64.js"></script>
+    <script src="~/Scripts/oss-upload-direct/upload.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        var download_file = { iframe: undefined };
+        var roleType = "@ViewBag.RoleType";
+        var countPerPage = @ViewBag.CountPerPage;
+        var pageCount = 1;
+        var scoreList = [];
+        $(function() {
+            $(".menu .list-group a.list-group-item").eq(4).addClass("list-group-active");
+
+            var osspath = "DSATReport/QSP/";
+            var uploader = init_uploader({
+                filepath: osspath,
+                uploaded: function (args) {
+                    $.post("ComplaintVideoSave",{
+                        VideoFileName:args.fileName
+                    },function(){                
+                    });
+                },
+                complete:function(){
+                    SearchShopFileInfo();                   
+
+                    $("#postfiles").attr("disabled",false);
+                    $("#selectfiles").attr("disabled",false);
+
+                    $("#UploadModal #ossfile").empty();
+                    $("#UploadModal").modal('hide');
+                }
+            });
+
+            $("#postfiles").click(function(){
+                uploader.start();
+                $(this).attr("disabled",true);
+                $("#selectfiles").attr("disabled",true);
+            });
+
+            $('#UploadModal').on('hidden.bs.modal', function (e) {
+                $("#UploadModal #ossfile").empty();
+                $("#postfiles").attr("disabled",false);
+                $("#selectfiles").attr("disabled",false);
+            })
+            $('#PlayModal').on('hidden.bs.modal', function (e) {
+                $(this).find("video").prop("src","");
+            })
+            
+
+            $('.i,.opens').click(function(){
+                $('.i').children("font").toggleClass("other");
+                $('#searchForm').slideToggle();
+                $('#searchForm').toggleClass('none');
+                $('.opens').slideToggle();
+                $('.opens').toggleClass('none');
+            });
+
+            $("#btnSearch").click(function () {
+                SearchShopFileInfo();
+            });
+
+            $("#btnDownloadReport").click(function(){
+                alert("正在下载...");
+                var shopCode = "";
+                $("input[name='nDealerID[]'][checked='checked']").each(function(){
+                    shopCode+=($(this).val()+";");
+                });
+
+                var areaCode =  $("input[name='sArea'][checked='checked']").val();
+                var groupCode =  $("input[name='sDealerGroup[]'][checked='checked']").val();
+                $.get("DownloadFiles",{
+                    areaCode:areaCode,
+                    groupCode:groupCode,
+                    shopCode:shopCode,
+                    year : $("input[name='nYear'][checked='checked']").val(),
+                    quarterormonth:$("input[name='nDateSort'][checked='checked']").val(),
+                    type:"Complaint"
+                }, function(data){
+                    if(data){
+                        if(data.Status){
+                            window.location.href ="DownloadFile?file="+ data.File;
+                            closealert();
+                        }else{
+                            alert(data.ErrorMsg);
+                        }
+                    }
+                });
+            });
+
+            if(roleType == "S"|| roleType=="SL"){
+                $("#searchArea").show();
+            }else if(roleType=="02"||roleType=="01"){
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchArea').find('ul').find('li');
+                $(li).click();
+                $('#searchArea').find('th').find('a').remove();
+            }else if(roleType == "G") {
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchDealerGroup').find('ul').find('li');
+                $(li).click();
+                $('#searchDealerGroup').find('th').find('a').remove();
+            }
+            else{
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var dealerUl = $('#searchDealer').show().find('ul');
+                var li = $("<li bChk='2' onclick='dealerLiClk(this)'></li>").html("@ViewBag.ShopNameForCurrentUser").append($("<input type='checkbox' name='nDealerID[]' value='" + @ViewBag.ShopCodeForCurrentUser + "'>"));
+                dealerUl.append(li);
+                $(li).click();
+            }
+
+            $("#btnSearch").click();
+        });
+
+        function SearchShopFileInfo(pageNo){
+            var shopCode = "";
+            $("input[name='nDealerID[]'][checked='checked']").each(function(){
+                shopCode+=($(this).val()+";");
+            });
+            pageNo=pageNo?pageNo:1;
+            $.ajax("ComplaintVideoSearch", {
+                method: "GET",
+                data: {
+                    areaCode: $("input[name='sArea'][checked='checked']").val(),
+                    groupCode:$("input[name='sDealerGroup[]'][checked='checked']").val(),
+                    shopCode: shopCode,
+                    year: $("input[name='nYear'][checked='checked']").val(),
+                    quarterormonth: $("input[name='nDateSort'][checked='checked']").val(),
+                    pageNum: pageNo,
+                    filename:$("#filename").val(),
+                    random:Math.random()
+                },
+                type: 'json',
+                success: function (data) {
+                    SearchShopFileInfoSuccess(data);
+                    pageCount = Math.ceil(data.totalCount / countPerPage);
+                    initPages(pageNo, pageCount,SearchShopFileInfo);
+                }
+            });
+        }
+
+        function play(fullname){
+            $("#PlayModal").modal("show").find("video").prop("src",fullname);
+        }
+
+        function SearchShopFileInfoSuccess(data){
+            var table = $(".comm-table-div>table");
+            table.find("tr:not(:first-child)").remove();
+            var download = "http://vgic-max.oss-cn-beijing.aliyuncs.com/DSATReport/QSP/";
+            $.each(data.shopInfoList, function (index, item) {
+                var oprations = "";
+                oprations =  "<a href='DownloadOSSFile?filename={2}'>下载</a> | <a href='javascript:void(0);' onclick='play(\"{0}\")'>播放</a> | <a href='javascript:;' onclick='delFile({1},\"{2}\")'>删除</a>";
+                oprations = stringFormat(oprations,download+item.FileName,item.FileId,"DSATReport/QSP/"+item.FileName);
+
+                var tr = $("<tr class='active'></tr>");
+                var col1 = $("<td></td>").html(oprations);
+                var col3 = $("<td></td>").html(item.FileName);
+                var col4 = $("<td class='text-center'></td>").html(item.ShopName);
+                var col5 = $("<td></td>").html(item.AreaName);
+                var col6 = $("<td></td>").html(item.GroupName);
+                var col7 = $("<td></td>").html(item.ShopType);
+                tr.append(col1).append(col3).append(col4).append(col5).append(col6).append(col7);
+
+                table.append(tr);
+            });
+        }
+
+        function download(filename){
+            window.location.href = "../QSP/DownloadFile?filename="+filename;
+        }
+
+        function addVideo(){
+            $("#UploadModal").modal('show');
+        }
+        function delFile(id,filename){
+            var delSure = confirm("确定要删除该视频吗？");
+            if(delSure){
+                $.ajax("/QSP/DeleteFile",{
+                    method: "POST",
+                    data: {
+                        id: id,
+                        filename:filename
+                    },
+                    type: 'json',
+                    success: function (data) {
+                        alert("删除成功！");
+                        SearchShopFileInfo();
+                    }
+                });
+            }
+        }
+       
+    </script>
+
+}
+<div id="UploadModal" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">上传QSP视频</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                <div id="upload-container" class="container-fluid" style="margin:0;padding:0">
+                    <div id="ossfile"></div>
+                    <div id="console"></div>
+                </div>
+                <div class="container-fluid pull-right">
+                    <button id="selectfiles" class='btn btn-default btn-sm'>选择文件</button>
+                    <button id="postfiles" class='btn btn-primary btn-sm'>开始上传</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="PlayModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">播放QSP视频</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                <video src="" style="width: 560px; background-color: black" codecs="avc1.42E01E, mp4a.40.2" controls autoplay="autoplay" preload="Auto"></video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="container" class="col-md-10">
+    <form id="searchForm" style="display:none;">
+        <div id="inputBox" style="display:none;"></div>
+        <input type="hidden" name="type" value="">
+        <table class="table table-bordered">
+            <tr id="searchArea" style="display:none;">
+                <th width="85" align="center" class="switch">
+                    Region<a href="javascript:;" id="toGroup" style="display: none;"></a>
+                </th>
+                <td>
+                    <ul class="list-inline">
+                        @foreach (var item in ((UserInfoDto)Session["LoginUser"]).SmallAreaList)
+                        {
+                            <li bchk="2" class="">@item.AreaName<input type="radio" name="sArea" value="@item.AreaCode"></li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr id="searchDealerGroup" style="display:none;">
+                <th width="85" align="center" class="switch">
+                    Dealer Group<a href="javascript:;" id="toArea" style="display: none;"></a>
+                </th>
+                <td>
+                    <ul class="list-inline">
+                        @foreach (var item in ((UserInfoDto)Session["LoginUser"]).GroupList)
+                        {
+                            <li bchk="2" class="">@item.GroupName<input type="checkbox" name="sDealerGroup[]" value="@item.GroupCode"></li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th align="center">Dealer</th>
+                <td id="searchDealer">
+                    <ul class="list-inline"></ul>
+                </td>
+            </tr>
+            <tr>
+                <th align="center">Wave</th>
+                <td id="searchDate">
+                    <ul class="list-inline">
+                        @for (int i = curYear; i > curYear - 8; i--)
+                        {
+                            if (i == curYear)
+                            {
+                                <li bchk="1" class="active">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i" checked="checked"></li>
+                            }
+                            else
+                            {
+                                <li bchk="2" class="">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i"></li>
+                            }
+                        }
+                    </ul>
+                    <ul class="list-inline">
+                        @for (int i = 1; i <= 4; i++)
+                        {
+                            @*if (i == @ViewBag.CurrentQuarter)
+                            {
+                                <li bchk="1" class="active">Q @Html.Raw(i)<input type="radio" name="nDateSort" value="@i" checked="checked"></li>
+                            }
+                            else
+                            {*@
+                                <li bchk="2" class="">Q @Html.Raw(i)<input type="radio" name="nDateSort" value="@i"></li>
+                            @*}*@
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <button type="button" class="btn btn-default" id="clear">清&nbsp;空</button>
+                    <button type="button" class="btn btn-primary" id="btnSearch">查&nbsp;询</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div class="opens">开启搜索</div>
+    <div class="sechform"><div class="collapse1 text-center"><div class="i"><font></font></div></div></div>
+
+    <form class="form-inline pull-left mb15">
+        <div class="form-group">
+            <input type="text" class="form-control" name="filename" id="filename" placeholder="关键字" value="">
+        </div>
+        <button type="button" id="btnCustomerSearch" class="btn btn-default">搜 索</button>
+    </form>
+    <div class="pull-right">
+        @if (ViewBag.UserId == "QSP")
+        {
+            <a href="javascript:addVideo()" class="btn btn-primary ">上传视频</a>
+        }
+        @*<a href="javascript:;" id="btnDownloadReport" class="btn btn-primary">导出数据</a>*@
+    </div>
+
+
+    <div class="table-responsive comm-table-div" style="font-size:12px;">
+        <table class="table table-bordered table-hover" style="max-width:945px;">
+            <tr>
+                <th width="120">操作</th>
+                <th width="400">文件名</th>
+                <th width="120">经销商名称</th>
+                <th width="60">区域</th>
+                <th width="100">经销商集团</th>
+                <th width="100">经销商类型</th>
+            </tr>
+        </table>
+    </div>
+    <div style="display:inline-block; color:red" class="pull-left">*视频为临时存放，不会永久存放</div>
+    <div id="pagination" class="pull-right">
+        <ul id="pageUl"></ul>
+    </div>
+</div>

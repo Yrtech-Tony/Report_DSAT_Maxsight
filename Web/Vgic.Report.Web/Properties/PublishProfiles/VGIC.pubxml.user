@@ -1,0 +1,2467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Project\vgicreport\publish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="7z.dll">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="7z64.dll">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="bin/7z.dll">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="bin/7z64.dll">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="bin/Aliyun.OpenServices.dll">
+      <publishTime>06/26/2014 12:10:34</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>06/17/2016 07:09:07</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>06/17/2016 07:09:07</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="bin/Infragistics3.Documents.Excel.v11.1.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/30/2016 20:10:30</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>04/30/2016 20:10:29</publishTime>
+    </File>
+    <File Include="bin/SevenZipSharp.dll">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/30/2016 20:10:28</publishTime>
+    </File>
+    <File Include="bin/Vgic.Report.Web.dll">
+      <publishTime>06/17/2016 07:05:56</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/30/2016 20:10:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/BootSideMenu.css">
+      <publishTime>05/29/2016 15:11:57</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-theme.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-theme.css.map">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-theme.min.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.css.map">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.min.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/BootSideMenu.js">
+      <publishTime>05/29/2016 15:11:57</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/npm.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/css/font-awesome-ie7.min.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/css/font-awesome.min.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/css/style-hht.css">
+      <publishTime>05/03/2016 22:12:59</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>06/06/2016 13:36:32</publishTime>
+    </File>
+    <File Include="Content/css/stylehht.css">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.eot">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.svg">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.ttf">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.woff">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/font/FontAwesome.otf">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/1.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/2.png">
+      <publishTime>05/03/2016 13:31:19</publishTime>
+    </File>
+    <File Include="Content/images/3.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/4.png">
+      <publishTime>05/03/2016 13:31:30</publishTime>
+    </File>
+    <File Include="Content/images/5.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/6.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/arrow.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/bgfb.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/BMR_Q.png">
+      <publishTime>04/15/2016 20:20:38</publishTime>
+    </File>
+    <File Include="Content/images/jxsbzsc.png">
+      <publishTime>04/15/2016 20:20:38</publishTime>
+    </File>
+    <File Include="Content/images/jxsrytb.png">
+      <publishTime>04/15/2016 20:20:38</publishTime>
+    </File>
+    <File Include="Content/images/loader.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/login-logo.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/loginbg.jpg">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/logo.png">
+      <publishTime>05/13/2016 21:21:02</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-01.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-04.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-055.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-1.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-10.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-11.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-12.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-13.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-14.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-15.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-16.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-17.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-18.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-19.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-2.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-20.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-21.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-22.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-23.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-24.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-25.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-26.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-27.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-28.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-29.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-3.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-30.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-31.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-32.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-33.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-34.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-35.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-36.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-37.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-38.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-39.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-4.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-40.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-41.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-42.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-43.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-44.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-45.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-46.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-47.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-48.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-49.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-5.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-50.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-51.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-52.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-53.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-54.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-55.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-56.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-57.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-58.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-59.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-6.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-60.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-61.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-62.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-63.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-64.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-65.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-66.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-67.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-68.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-69.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-7.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-70.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-71.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-72.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-73.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-74.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-75.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-76.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-77.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-78.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-79.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-8.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-80.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-81.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-82.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-83.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-88.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-89.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter1/chapter-9.png">
+      <publishTime>05/09/2016 10:13:33</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/01.png">
+      <publishTime>05/29/2016 20:57:09</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/02.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/03.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/04.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/05.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/06.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/07.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/12.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/13.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/14.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/15.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/16.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/17.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/18.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/19.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/20.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/21.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/22.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/23.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/24.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/25.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/26.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/27.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/28.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/29.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/30.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/31.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/32.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/33.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/34.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/35.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/36.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/37.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/38.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/39.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/40.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/41.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/42.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/43.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/44.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/45.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/46.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/47.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/48.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/49.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/50.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/51.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/52.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/53.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/54.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/55.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/56.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/57.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/58.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/59.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/60.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/61.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/62.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/63.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/64.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter10/65.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/01.jpg">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/02.png">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/03.png">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/04.png">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/05.png">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/06.png">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/07.png">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/12.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/13.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/14.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/15.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/16.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/17.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/18.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/19.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/20.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/21.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/22.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/23.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/24.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/25.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/26.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/27.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/28.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/29.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/30.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/31.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/32.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter2/33.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/01.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/02.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/03.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/04.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/05.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/06.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/07.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/12.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/13.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter3/14.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/01.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/02.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/03.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/04.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/05.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/06.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/07.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/12.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/13.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/14.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/15.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/16.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/17.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/18.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/19.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/20.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/21.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/22.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/23.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/24.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/25.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/26.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/27.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/28.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/29.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/30.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/31.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/32.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/33.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/34.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/35.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/36.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/37.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/38.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/39.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/40.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/41.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/42.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/43.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/44.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/45.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/46.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/47.png">
+      <publishTime>05/22/2016 23:51:56</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/48.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/49.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/50.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/51.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/52.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/54.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/55.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/56.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/57.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/58.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/59.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/60.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/61.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/62.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/63.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/64.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/65.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/66.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/67.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/68.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/69.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/70.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/71.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/73.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/74.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/75.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/76.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/77.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/78.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter4/79.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/01.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/02.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/03.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/04.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/05.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/06.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/07.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/08.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/09.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/10.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/11.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/12.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/13.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/14.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/15.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/16.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/17.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/18.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/19.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/20.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/21.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/22.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/23.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/24.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/25.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter5/26.png">
+      <publishTime>05/22/2016 23:51:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/01.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/02.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/03.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/04.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/05.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/06.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/07.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/12.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/13.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter6/14.png">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/01.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/02.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/03.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/04.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/05.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/06.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/07.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter7/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/01.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/02.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/03.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/04.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/05.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/06.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/07.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/08.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/09.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/10.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/100.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/101.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/102.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/103.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/104.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/105.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/106.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/107.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/108.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/109.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/11.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/110.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/111.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/112.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/113.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/114.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/115.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/116.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/117.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/118.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/119.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/12.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/120.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/121.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/122.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/123.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/124.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/125.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/126.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/127.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/128.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/129.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/13.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/130.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/131.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/132.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/134.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/135.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/136.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/137.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/138.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/139.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/14.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/140.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/141.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/142.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/143.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/144.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/145.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/146.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/147.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/148.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/149.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/15.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/150.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/151.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/152.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/16.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/17.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/18.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/19.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/20.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/21.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/22.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/23.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/24.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/25.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/26.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/27.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/28.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/29.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/30.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/31.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/32.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/33.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/34.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/35.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/36.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/37.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/38.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/39.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/40.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/41.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/42.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/43.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/44.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/45.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/46.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/47.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/48.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/49.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/50.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/51.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/52.png">
+      <publishTime>05/29/2016 15:11:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/53.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/54.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/55.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/56.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/57.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/58.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/59.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/60.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/61.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/62.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/63.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/64.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/65.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/66.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/67.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/68.png">
+      <publishTime>05/29/2016 15:11:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/69.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/70.png">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/71.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/72.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/73.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/74.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/75.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/76.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/77.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/78.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/79.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/80.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/81.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/82.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/83.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/84.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/85.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/86.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/87.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/88.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/89.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/90.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/91.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/92.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/93.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/94.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/95.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/96.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/97.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/98.png">
+      <publishTime>05/29/2016 15:11:57</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter8/99.png">
+      <publishTime>05/28/2016 22:53:13</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/01.png">
+      <publishTime>05/29/2016 20:57:09</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/02.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/03.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/04.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/05.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/06.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/07.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/08.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/09.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/10.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/11.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/12.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/13.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/14.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/15.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/16.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/17.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/18.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/19.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/20.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/21.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/22.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/23.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/24.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/25.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/26.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/27.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/28.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/29.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/30.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/31.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/32.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/33.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/34.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/35.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/OperationStandard/Sales/chapter9/36.png">
+      <publishTime>05/22/2016 22:13:17</publishTime>
+    </File>
+    <File Include="Content/images/switch.png">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/images/sy5.png">
+      <publishTime>04/15/2016 20:20:38</publishTime>
+    </File>
+    <File Include="Content/images/uploadify-cancel.png">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Content/images/wxjxssp.png">
+      <publishTime>04/15/2016 20:20:38</publishTime>
+    </File>
+    <File Include="Content/js/My97DatePickerBeta.zip">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/calendar.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/lang/en.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/lang/zh-cn.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/lang/zh-tw.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/datePicker.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/default/datepicker.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/default/img.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/WdatePicker.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/whyGreen/bg.jpg">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/whyGreen/datepicker.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/skin/whyGreen/img.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/WdatePicker.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/lang/en.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/lang/zh-cn.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/lang/zh-tw.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/readme.txt">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/datePicker.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/default/datepicker.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/default/img.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/WdatePicker.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/whyGreen/bg.jpg">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/whyGreen/datepicker.css">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Content/My97DatePicker/开发包/skin/whyGreen/img.gif">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/15/2016 19:32:12</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>06/17/2016 07:08:58</publishTime>
+    </File>
+    <File Include="Properties/DataSources/System.Data.DataSet.datasource">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-paginator.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>04/30/2016 20:10:26</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/comm.js">
+      <publishTime>06/06/2016 14:47:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery.twbsPagination.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/base64.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/aes/aes-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/aes/aes.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/cbc/cbc-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/cbc/cbc.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-1.0.zip">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-md5/crypto-md5.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-sha1-hmac-pbkdf2-marc4/crypto-sha1-hmac-pbkdf2-marc4.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-sha1-hmac-pbkdf2-ofb-aes/crypto-sha1-hmac-pbkdf2-ofb-aes.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-sha1-hmac-pbkdf2-rabbit/crypto-sha1-hmac-pbkdf2-rabbit.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-sha1-hmac-pbkdf2/crypto-sha1-hmac-pbkdf2.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-sha1/crypto-sha1.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto-sha256/crypto-sha256.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto/crypto-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/crypto/crypto.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/hmac/hmac-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/hmac/hmac.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/marc4/marc4-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/marc4/marc4.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/md5/md5-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/md5/md5.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/ofb/ofb-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/ofb/ofb.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/pbkdf2/pbkdf2-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/pbkdf2/pbkdf2.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/rabbit/rabbit-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/rabbit/rabbit.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/sha1/sha1-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/sha1/sha1.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/sha256/sha256-min.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/crypto1/sha256/sha256.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/custom.html">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/dump.php">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/events.html">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/jquery/all_runtimes.html">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/jquery/jquery_ui_widget.html">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/jquery/queue_widget.html">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/jquery/s3.php">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/examples/upload.php">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ar.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/az.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/bs.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/cs.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/cy.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/da.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/de.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/el.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/en.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/es.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/et.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/fa.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/fi.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/fr.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/he.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/hr.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/hu.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/hy.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/id.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/it.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ja.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ka.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/kk.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/km.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ko.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/lt.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/lv.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/mn.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ms.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/nl.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/pl.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/pt_BR.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ro.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/ru.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/sk.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/sq.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/sr.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/sr_RS.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/sv.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/th_TH.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/tr.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/uk_UA.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/zh_CN.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/i18n/zh_TW.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/css/jquery.plupload.queue.css">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/backgrounds.gif">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/buttons-disabled.png">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/buttons.png">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/delete.gif">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/done.gif">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/error.gif">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/throbber.gif">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/img/transp50.png">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/jquery.plupload.queue.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.plupload.queue/jquery.plupload.queue.min.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.ui.plupload/css/jquery.ui.plupload.css">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.ui.plupload/img/loading.gif">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.ui.plupload/img/plupload.png">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.ui.plupload/jquery.ui.plupload.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/jquery.ui.plupload/jquery.ui.plupload.min.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/moxie.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/moxie.min.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/Moxie.swf">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/Moxie.xap">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/plupload.dev.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/plupload.full.min.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/js/plupload.min.js">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/license.txt">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/lib/plupload-2.1.2/readme.md">
+      <publishTime>05/29/2016 23:26:36</publishTime>
+    </File>
+    <File Include="Scripts/oss-upload-direct/upload.js">
+      <publishTime>06/16/2016 21:41:58</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>05/29/2016 23:26:35</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.ACScoreDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.AreaDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.CodeNameDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.CommentDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.GroupDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.PictureDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.ShopDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.StaffInfoDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.UserInfoDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.VideoDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Service References/DSATReportServer/Vgic.Report.Web.DSATReportServer.VoteDto.datasource">
+      <publishTime>06/12/2016 18:56:10</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePassword.cshtml">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>05/12/2016 20:33:51</publishTime>
+    </File>
+    <File Include="Views/ACScore/Index.cshtml">
+      <publishTime>05/16/2016 22:40:37</publishTime>
+    </File>
+    <File Include="Views/ACScore/_PartialEdit.cshtml">
+      <publishTime>05/16/2016 22:40:37</publishTime>
+    </File>
+    <File Include="Views/AnnualStarDealer/Complaint.cshtml">
+      <publishTime>05/06/2016 12:58:11</publishTime>
+    </File>
+    <File Include="Views/AnnualStarDealer/DealerGuide.cshtml">
+      <publishTime>05/01/2016 22:36:54</publishTime>
+    </File>
+    <File Include="Views/AnnualStarDealer/QuarterlyReport.cshtml">
+      <publishTime>05/06/2016 13:02:10</publishTime>
+    </File>
+    <File Include="Views/AnnualStarDealer/_AnnualStarDealerLayout.cshtml">
+      <publishTime>06/03/2016 10:59:18</publishTime>
+    </File>
+    <File Include="Views/BestPractice/Casebook.cshtml">
+      <publishTime>06/12/2016 11:48:09</publishTime>
+    </File>
+    <File Include="Views/BestPractice/Detail.cshtml">
+      <publishTime>06/16/2016 20:12:17</publishTime>
+    </File>
+    <File Include="Views/BestPractice/Document.cshtml">
+      <publishTime>05/29/2016 20:43:44</publishTime>
+    </File>
+    <File Include="Views/BestPractice/Index.cshtml">
+      <publishTime>06/12/2016 12:27:55</publishTime>
+    </File>
+    <File Include="Views/BestPractice/_BestPracticeLayout.cshtml">
+      <publishTime>06/12/2016 11:48:10</publishTime>
+    </File>
+    <File Include="Views/BMR/DealerGuide.cshtml">
+      <publishTime>05/09/2016 22:37:32</publishTime>
+    </File>
+    <File Include="Views/BMR/QuarterlyReport.cshtml">
+      <publishTime>05/09/2016 22:23:56</publishTime>
+    </File>
+    <File Include="Views/BMR/_BMRLayout.cshtml">
+      <publishTime>05/09/2016 22:20:28</publishTime>
+    </File>
+    <File Include="Views/CSSOEM/Complaint.cshtml">
+      <publishTime>05/06/2016 13:02:24</publishTime>
+    </File>
+    <File Include="Views/CSSOEM/DealerGuide.cshtml">
+      <publishTime>05/01/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Views/CSSOEM/MonthReport.cshtml">
+      <publishTime>05/06/2016 13:02:37</publishTime>
+    </File>
+    <File Include="Views/CSSOEM/QuarterlyReport.cshtml">
+      <publishTime>05/06/2016 13:02:47</publishTime>
+    </File>
+    <File Include="Views/CSSOEM/_CSSOEMLayout.cshtml">
+      <publishTime>06/03/2016 10:38:48</publishTime>
+    </File>
+    <File Include="Views/DOSAudit/Complaint.cshtml">
+      <publishTime>06/03/2016 10:38:48</publishTime>
+    </File>
+    <File Include="Views/DOSAudit/DealerGuide.cshtml">
+      <publishTime>06/03/2016 10:38:48</publishTime>
+    </File>
+    <File Include="Views/DOSAudit/QuarterlyReport.cshtml">
+      <publishTime>06/03/2016 10:38:48</publishTime>
+    </File>
+    <File Include="Views/DOSAudit/_DOSAuditLayout.cshtml">
+      <publishTime>06/03/2016 10:38:48</publishTime>
+    </File>
+    <File Include="Views/FiveStarDealer/Index.cshtml">
+      <publishTime>06/06/2016 14:29:13</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>06/12/2016 20:21:23</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/Sales.cshtml">
+      <publishTime>05/30/2016 23:38:19</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter1.cshtml">
+      <publishTime>05/28/2016 18:28:14</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter10.cshtml">
+      <publishTime>05/29/2016 21:13:57</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter2.cshtml">
+      <publishTime>05/29/2016 19:40:13</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter3.cshtml">
+      <publishTime>05/29/2016 19:40:13</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter4.cshtml">
+      <publishTime>05/29/2016 19:40:12</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter5.cshtml">
+      <publishTime>05/29/2016 19:40:13</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter6.cshtml">
+      <publishTime>05/29/2016 21:17:29</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter7.cshtml">
+      <publishTime>05/29/2016 21:14:19</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter81.cshtml">
+      <publishTime>05/30/2016 12:43:42</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter82.cshtml">
+      <publishTime>05/30/2016 12:46:06</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter83.cshtml">
+      <publishTime>05/29/2016 18:23:36</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/SalesChapter9.cshtml">
+      <publishTime>05/29/2016 21:14:29</publishTime>
+    </File>
+    <File Include="Views/OperationStandard/_OperationStandardLayout.cshtml">
+      <publishTime>05/30/2016 23:37:32</publishTime>
+    </File>
+    <File Include="Views/Person/InfoDetail.cshtml">
+      <publishTime>05/19/2016 14:40:16</publishTime>
+    </File>
+    <File Include="Views/Person/InfoEdit.cshtml">
+      <publishTime>05/19/2016 21:15:09</publishTime>
+    </File>
+    <File Include="Views/Person/InfoSave.cshtml">
+      <publishTime>05/19/2016 21:13:14</publishTime>
+    </File>
+    <File Include="Views/Person/InfoSearch.cshtml">
+      <publishTime>05/19/2016 21:43:42</publishTime>
+    </File>
+    <File Include="Views/QSP/Complaint.cshtml">
+      <publishTime>05/06/2016 13:03:19</publishTime>
+    </File>
+    <File Include="Views/QSP/ComplaintVideo.cshtml">
+      <publishTime>06/16/2016 20:12:18</publishTime>
+    </File>
+    <File Include="Views/QSP/DealerGuide.cshtml">
+      <publishTime>05/01/2016 22:58:00</publishTime>
+    </File>
+    <File Include="Views/QSP/QuarterlyReport.cshtml">
+      <publishTime>05/06/2016 13:03:29</publishTime>
+    </File>
+    <File Include="Views/QSP/_QSPLayout.cshtml">
+      <publishTime>06/03/2016 10:38:49</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>05/21/2016 22:40:34</publishTime>
+    </File>
+    <File Include="Views/Shared/_PersonLayout.cshtml">
+      <publishTime>05/05/2016 13:41:08</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/30/2016 20:10:27</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/16/2016 22:00:12</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+System.Data.OleDb.OleDbException: 列名 'MacAddress' 无效。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CommonHandler.query(String sql) 位置 d:\D盘\workspace\项目整理\进行中的项目\Source\PC程序\大众报告平台\XHXWebSite\App_Code\CommonHandler.cs:行号 99 
+SELECT UserID,PSW,RoleType,MacAddress FROM dbo.UserInfo WHERE UserID = 'admin'

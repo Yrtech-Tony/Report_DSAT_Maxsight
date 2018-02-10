@@ -1,0 +1,614 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "经销商运营管理规范";
+}
+<link href="~/Content/bootstrap/css/BootSideMenu.css" rel="stylesheet" />
+<style>
+    p {
+        text-indent: 2em;
+        text-align: justify;
+    }
+
+    p, span, div {
+        font-size: 13px;
+    }
+    .section-bg {
+        background: url(../../Content/images/OperationStandard/Sales/chapter10/03.png);
+        padding-top: 350px;
+    }
+     .section-title-page {
+        background-color: rgb(31,78,121);
+        color: white;
+        padding: 25px;
+        border-top-right-radius: 100px;
+    }
+
+        .section-title-page a {
+            color: #ddd;
+            font-weight: 800;
+        }
+
+            .section-title-page a:hover {
+                color: white;
+                font-weight: 800;
+            }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .per80-width {
+        width: 80%;
+    }
+
+    .per60-width {
+        width: 60%;
+    }
+
+    ul a {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    h4 {
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    h5 {
+        font-size: 13px;
+    }
+</style>
+@section scripts{
+    <script src="~/Content/bootstrap/js/BootSideMenu.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fixed-nav').BootSideMenu({ side: "right", width: 300, autoClose: true });
+            $('#fixed-nav').show();
+
+            if (window.location.search != "") {
+                $("#search_box").show();
+
+                var path = window.location.href.substr(window.location.href.lastIndexOf("?") + 1);
+                var id = path.replace(/#/g, "").replace(/=/g, "").replace(/-/g, "");
+                var hashA = $("#fixed-nav a[href='Sales?" + path + "']").attr("id", id).addClass("active");
+                $("#fixed-nav > div > div").scrollTop(hashA.get(0).offsetTop - 60);
+                $("#fixed-nav a").click(function () {
+                    $("#fixed-nav > div > div").scrollTop(this.offsetTop - 60);
+                })
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+    (function ($) {
+        $.fn.fixDiv = function (options) {
+            var defaultVal = {
+                top: 10
+            };
+            var obj = $.extend(defaultVal, options);
+            $this = this;
+            var _top = $this.offset().top;
+            var _left = $this.offset().left;
+            $(window).scroll(function () {
+                var _currentTop = $this.offset().top;
+                var _scrollTop = $(document).scrollTop();
+                if (_scrollTop > _top) {
+                    $this.offset({
+                        top: _scrollTop + obj.top,
+                        left: _left
+                    });
+                } else {
+                    $this.offset({
+                        top: _top,
+                        left: _left
+                    });
+                }
+            });
+            return $this;
+        };
+    })(jQuery);
+    $(function () {
+        $("#search_box").fixDiv({ top: 10 });
+        $('#search_btn').click(highlight);//点击search时，执行highlight函数；
+        $('#searchstr').keydown(function (e) {
+            var key = e.which;
+            if (key == 13) highlight();
+        })
+
+        var i = 0;
+        var sCurText;
+        function highlight() {
+            clearSelection();//先清空一下上次高亮显示的内容；
+
+            var flag = 0;
+            var bStart = true;
+
+            $('#tip').text('');
+            $('#tip').hide();
+            var searchText = $('#searchstr').val();
+            var _searchTop = $('#searchstr').offset().top + 30;
+            var _searchLeft = $('#searchstr').offset().left;
+            if ($.trim(searchText) == "") {
+                showTips("请输入查找关键字名", _searchTop, 3, _searchLeft);
+                return;
+            }
+
+            var searchText = $('#searchstr').val();//获取你输入的关键字；
+            var regExp = new RegExp(searchText, 'g');//创建正则表达式，g表示全局的，如果不用g，则查找到第一个就不会继续向下查找了；
+            var content = $("#container").text();
+            console.log(content);
+            if (!regExp.test(content)) {
+                showTips("没有找到要查找的关键字", _searchTop, 3, _searchLeft);
+                return;
+            } else {
+                if (sCurText != searchText) {
+                    i = 0;
+                    sCurText = searchText;
+                }
+            }
+
+            $('p,h4,h3,h5,span,a').each(function () {
+                var html = $(this).html();
+                var newHtml = html.replace(regExp, '<span class="highlight">' + searchText + '</span>');//将找到的关键字替换，加上highlight属性；
+
+                $(this).html(newHtml);//更新；
+                flag = 1;
+            });
+
+            if (flag == 1) {
+                if ($(".highlight").size() > 1) {
+                    var _top = $(".highlight").eq(i).offset().top + $(".highlight").eq(i).height();
+                    var _tip = $(".highlight").eq(i).parent().find("strong").text();
+                    if (_tip == "") _tip = $(".highlight").eq(i).parent().parent().find("strong").text();
+                    var _left = $(".highlight").eq(i).offset().left;
+                    var _tipWidth = $("#tip").width();
+                    if (_left > $(document).width() - _tipWidth) {
+                        _left = _left - _tipWidth;
+                    }
+                    $("#tip").html(_tip).show();
+                    $("#tip").offset({ top: _top, left: _left });
+                    //$("#search_btn").html("查找下一个");
+                } else {
+                    var _top = $(".highlight").offset().top + $(".highlight").height();
+                    var _tip = $(".highlight").parent().find("strong").text();
+                    var _left = $(".highlight").offset().left;
+                    $('#tip').show();
+                    $("#tip").html(_tip).offset({ top: _top, left: _left });
+                }
+                $("html, body").animate({ scrollTop: _top - 50 });
+                i++;
+                if (i > $(".highlight").size() - 1) {
+                    i = 0;
+                }
+            }
+        }
+        function clearSelection() {
+            $('p,h4,h3,h5,span,a').each(function () {
+                //找到所有highlight属性的元素；
+                $(this).find('.highlight').each(function () {
+                    $(this).replaceWith($(this).html());//将他们的属性去掉；
+                });
+            });
+        }
+
+        //mask
+        var tipsDiv = '<div class="tipsClass"></div>';
+        $('body').append(tipsDiv);
+        function showTips(tips, height, time, left) {
+            var windowWidth = document.documentElement.clientWidth;
+            $('.tipsClass').text(tips);
+            $('div.tipsClass').css({
+                'top': height + 'px',
+                'left': left + 'px',
+                'position': 'absolute',
+                'padding': '8px 6px',
+                'background': '#000000',
+                'font-size': 14 + 'px',
+                'font-weight': 900,
+                'margin': '0 auto',
+                'text-align': 'center',
+                'width': 'auto',
+                'color': '#fff',
+                'border-radius': '2px',
+                'opacity': '0.8',
+                'box-shadow': '0px 0px 10px #000',
+                '-moz-box-shadow': '0px 0px 10px #000',
+                '-webkit-box-shadow': '0px 0px 10px #000'
+            }).show();
+            setTimeout(function () { $('div.tipsClass').fadeOut(); }, (time * 1000));
+        }
+    })
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 menu">
+            <ul class="list-group" style="list-style: none;">
+                <li><a class="list-group-item"><h4>经销商运营管理规范</h4><h4 class="english">Dealer Operation Standard</h4></a></li>
+                <li>
+                    <a href="Sales" class="list-group-item list-group-active">售前<br><span class="english">Sales</span></a>
+                </li>
+                <li> <a href="Aftersales" class="list-group-item">售后<br><span class="english">Aftersales</span></a> </li>
+            </ul>
+        </div>
+        <div id="fixed-nav" style="display:none">
+            <a href="Sales?chapter=1#title" class="list-group-item"><strong>大众进口汽车经销商运营管理规范</strong> </a>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=1#chapter1" class="list-group-item">第一章：经销商设施与形象管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=1#section-1" class="list-group-item">形象与设施CI/VI</a>
+                        <ul>
+                            <li><a href="Sales?chapter=1#section-1-01" class="list-group-item">外部标识和场地</a></li>
+                            <li><a href="Sales?chapter=1#section-1-02" class="list-group-item">外部建筑与环境</a></li>
+                            <li><a href="Sales?chapter=1#section-1-03" class="list-group-item">内部装饰与设施</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=1#section-2" class="list-group-item">展车管理</a>
+                        <ul>
+                            <li>
+                                <a href="Sales?chapter=1#section-2-01" class="list-group-item">展车摆放</a>
+                            </li>
+                            <li><a href="Sales?chapter=1#section-2-02" class="list-group-item">展车外观</a></li>
+                            <li><a href="Sales?chapter=1#section-2-03" class="list-group-item">展车内部</a></li>
+                            <li><a href="Sales?chapter=1#section-2-04" class="list-group-item">展车维护</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=1#section-3" class="list-group-item">员工形象管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=1#section-3-01" class="list-group-item">销售人员形象管理</a></li>
+                            <li><a href="Sales?chapter=1#section-3-02" class="list-group-item">售后人员形象管理</a></li>
+                            <li><a href="Sales?chapter=1#section-3-03" class="list-group-item">车间人员服装管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=1#section-4" class="list-group-item">经销商分类</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=2#chapter2" class="list-group-item">第二章：人力资源管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=2#section-1" class="list-group-item">组织架构与岗位职责</a>
+                        <ul>
+                            <li><a href="Sales?chapter=2#section-1-01" class="list-group-item">组织架构图</a></li>
+                            <li><a href="Sales?chapter=2#section-1-02" class="list-group-item">岗位职责</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=2#section-2" class="list-group-item">人员招聘</a>
+                        <ul>
+                            <li><a href="Sales?chapter=2#section-2-01" class="list-group-item">关键管理岗位评估中心</a></li>
+                            <li><a href="Sales?chapter=2#section-2-02" class="list-group-item">招聘策略</a></li>
+                            <li><a href="Sales?chapter=2#section-2-03" class="list-group-item">招聘流程</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=2#section-3" class="list-group-item">薪酬与绩效管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=2#section-3-01" class="list-group-item">薪酬体系构成</a></li>
+                            <li><a href="Sales?chapter=2#section-3-02" class="list-group-item">薪酬体系建议标准</a></li>
+                            <li><a href="Sales?chapter=2#section-3-03" class="list-group-item">绩效管理PDCA循环</a></li>
+                            <li><a href="Sales?chapter=2#section-3-04" class="list-group-item">绩效管理工具</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=2#section-4" class="list-group-item">经销商人员保留措施</a>
+                        <ul>
+                            <li><a href="Sales?chapter=2#section-4-01" class="list-group-item">人员保留措施</a></li>
+                            <li><a href="Sales?chapter=2#section-4-02" class="list-group-item">人员保留方案</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=3#chapter3" class="list-group-item">第三章：培训管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=3#section-1" class="list-group-item">销售培训</a>
+                        <ul>
+                            <li><a href="Sales?chapter=3#section-1-01" class="list-group-item">大众进口汽车集团培训部要求</a></li>
+                            <li><a href="Sales?chapter=3#section-1-02" class="list-group-item">培训运营管理流程</a></li>
+                            <li><a href="Sales?chapter=3#section-1-03" class="list-group-item">大众进口汽车培训项目简介</a></li>
+                            <li><a href="Sales?chapter=3#section-1-04" class="list-group-item">在线培训平台介绍</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=3#section-2" class="list-group-item">经销商内部培训(销售）</a>
+                        <ul>
+                            <li><a href="Sales?chapter=3#section-2-01" class="list-group-item">经销商内部培训管理</a></li>
+                            <li><a href="Sales?chapter=3#section-2-02" class="list-group-item">经销商内部培训流程</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=3#section-3" class="list-group-item">售后培训</a>
+                        <ul>
+                            <li><a href="Sales?chapter=3#section-3-01" class="list-group-item">厂方培训要求</a></li>
+                            <li><a href="Sales?chapter=3#section-3-02" class="list-group-item">厂方培训课程</a></li>
+                            <li><a href="Sales?chapter=3#section-3-03" class="list-group-item">培训认证要求</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=4#chapter4" class="list-group-item">第四章：市场管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=4#section-1" class="list-group-item">市场计划制定</a>
+                        <ul>
+                            <li><a href="Sales?chapter=4#section-1-01" class="list-group-item">市场计划制定流程</a></li>
+                            <li><a href="Sales?chapter=4#section-1-02" class="list-group-item">市场信息分析</a></li>
+                            <li><a href="Sales?chapter=4#section-1-03" class="list-group-item">大众进口汽车市场活动指导</a></li>
+                            <li><a href="Sales?chapter=4#section-1-04" class="list-group-item">确立营销目标</a></li>
+                            <li><a href="Sales?chapter=4#section-1-05" class="list-group-item">确定开发策略</a></li>
+                            <li><a href="Sales?chapter=4#section-1-06" class="list-group-item">编制市场活动预算</a></li>
+                            <li><a href="Sales?chapter=4#section-1-07" class="list-group-item">编制市场开发计划书</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=4#section-2" class="list-group-item">市场活动执行</a>
+                        <ul>
+                            <li><a href="Sales?chapter=4#section-2-01" class="list-group-item">市场活动概述</a></li>
+                            <li><a href="Sales?chapter=4#section-2-02" class="list-group-item">线上市场活动</a></li>
+                            <li><a href="Sales?chapter=4#section-2-03" class="list-group-item">大众进口汽车培训项目简介</a></li>
+                            <li><a href="Sales?chapter=4#section-2-04" class="list-group-item">线下市场活动</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=4#section-3" class="list-group-item">市场活动分析与评估</a>
+                        <ul>
+                            <li><a href="Sales?chapter=4#section-3-01" class="list-group-item">活动目标分析</a></li>
+                            <li><a href="Sales?chapter=4#section-3-02" class="list-group-item">活动效果评估</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=4#section-4" class="list-group-item">公共关系管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=4#section-4-01" class="list-group-item">公共关系维系</a></li>
+                            <li><a href="Sales?chapter=4#section-4-02" class="list-group-item">公关事件应对</a></li>
+                            <li><a href="Sales?chapter=4#section-4-03" class="list-group-item">危机公关</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=4#section-5" class="list-group-item">大众进口汽车市场标准</a>
+                        <ul>
+                            <li><a href="Sales?chapter=4#section-5-01" class="list-group-item">CI/VI标准</a></li>
+                            <li><a href="Sales?chapter=4#section-5-02" class="list-group-item">广告宣传规范</a></li>
+                            <li><a href="Sales?chapter=4#section-5-03" class="list-group-item">POSM标准</a></li>
+                            <li><a href="Sales?chapter=4#section-5-04" class="list-group-item">市场营销费用复核</a></li>
+                            <li><a href="Sales?chapter=4#section-5-05" class="list-group-item">Social/Digital活动规范</a></li>
+                            <li><a href="Sales?chapter=4#section-5-06" class="list-group-item">网站建设规范</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=5#chapter5" class="list-group-item">第五章：客户关系管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=5#section-1" class="list-group-item">客户营销</a>
+                        <ul>
+                            <li><a href="Sales?chapter=5#section-1-01" class="list-group-item">客户信息管理</a></li>
+                            <li><a href="Sales?chapter=5#section-1-02" class="list-group-item">销售客户营销</a></li>
+                            <li><a href="Sales?chapter=5#section-1-03" class="list-group-item">售后客户营销</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=5#section-2" class="list-group-item">客户关爱</a>
+                        <ul>
+                            <li><a href="Sales?chapter=5#section-2-01" class="list-group-item">客户忠诚度管理</a></li>
+                            <li><a href="Sales?chapter=5#section-2-02" class="list-group-item">客户投诉管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=5#section-3" class="list-group-item">客户满意度管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=5#section-3-01" class="list-group-item">客户满意度概念</a></li>
+                            <li><a href="Sales?chapter=5#section-3-02" class="list-group-item">客户满意度调查</a></li>
+                            <li><a href="Sales?chapter=5#section-3-03" class="list-group-item">客户满意度改善</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=6#chapter6" class="list-group-item">第六章：财务管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=6#section-1" class="list-group-item">大众进口汽车融资平台</a>
+                        <ul>
+                            <li><a href="Sales?chapter=6#section-1-01" class="list-group-item">大众进口汽车融资平台介绍</a></li>
+                            <li><a href="Sales?chapter=6#section-1-02" class="list-group-item">融资平台申请</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=6#section-2" class="list-group-item">经销商BMR评估</a>
+                        <ul>
+                            <li><a href="Sales?chapter=6#section-2-01" class="list-group-item">BMR报表要求</a></li>
+                            <li><a href="Sales?chapter=6#section-2-02" class="list-group-item">BMR报表提交</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=6#section-3" class="list-group-item">财务运营管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=6#section-3-01" class="list-group-item">财务预算</a></li>
+                            <li><a href="Sales?chapter=6#section-3-02" class="list-group-item">融资管理</a></li>
+                            <li><a href="Sales?chapter=6#section-3-03" class="list-group-item">日常财务运营</a></li>
+                            <li><a href="Sales?chapter=6#section-3-04" class="list-group-item">财务核算与分析</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=7#chapter7" class="list-group-item">第七章：IT管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=7#section-1" class="list-group-item">经销商IT网络</a>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=7#section-2" class="list-group-item">IT设备</a>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=7#section-3" class="list-group-item">IT应用</a>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=7#section-4" class="list-group-item">IT维护</a>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=7#section-5" class="list-group-item">经销商网站</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=81#chapter8" class="list-group-item">第八章：销售管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=81#section-1" class="list-group-item">销售计划和订单管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=81#section-1-01" class="list-group-item">销售计划</a></li>
+                            <li><a href="Sales?chapter=81#section-1-02" class="list-group-item">物流管理</a></li>
+                            <li><a href="Sales?chapter=81#section-1-03" class="list-group-item">车辆管理</a></li>
+                            @*<li><a href="Sales?chapter=81#section-1-04" class="list-group-item">确立营销目标</a></li>
+                            <li><a href="Sales?chapter=81#section-1-05" class="list-group-item">确定开发策略</a></li>
+                            <li><a href="Sales?chapter=81#section-1-06" class="list-group-item">编制市场活动预算</a></li>
+                            <li><a href="Sales?chapter=81#section-1-07" class="list-group-item">编制市场开发计划书</a></li>*@
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=81#section-2" class="list-group-item">潜客及销售线索管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=81#section-2-01" class="list-group-item">客户生命周期概述</a></li>
+                            <li><a href="Sales?chapter=81#section-2-02" class="list-group-item">前期线索管理</a></li>
+                            <li><a href="Sales?chapter=81#section-2-03" class="list-group-item">建档潜客管理</a></li>
+                            <li><a href="Sales?chapter=81#section-2-04" class="list-group-item">成交客户管理</a></li>
+                            <li><a href="Sales?chapter=81#section-2-05" class="list-group-item">失销潜客管理</a></li>
+                            <li><a href="Sales?chapter=81#section-2-06" class="list-group-item">潜客档案管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=82#section-3" class="list-group-item">展厅管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=82#section-3-01" class="list-group-item">展厅现场管理</a></li>
+                            <li><a href="Sales?chapter=82#section-3-02" class="list-group-item">晨夕会管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=82#section-4" class="list-group-item">销售核心流程</a>
+                        <ul>
+                            <li><a href="Sales?chapter=82#section-4-01" class="list-group-item">销售核心流程</a></li>
+                            <li><a href="Sales?chapter=82#section-4-02" class="list-group-item">销售流程详解</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=83#section-5" class="list-group-item">试乘试驾管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=83#section-5-01" class="list-group-item">试乘试驾车管理</a></li>
+                            <li><a href="Sales?chapter=83#section-5-02" class="list-group-item">试乘试驾路线</a></li>
+                            <li><a href="Sales?chapter=83#section-5-03" class="list-group-item">试乘试驾流程</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=83#section-6" class="list-group-item">网电销管理</a><ul>
+                            <li><a href="Sales?chapter=83#section-6-01" class="list-group-item">网电销概述</a></li>
+                            <li><a href="Sales?chapter=83#section-6-02" class="list-group-item">组织结构与职责</a></li>
+                            <li><a href="Sales?chapter=83#section-6-03" class="list-group-item">网电销业务流程</a></li>
+                            <li><a href="Sales?chapter=83#section-6-04" class="list-group-item">KPI管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=9#chapter9" class="list-group-item">第九章：大客户管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=9#section-1" class="list-group-item">大客户业务概述</a>
+                        <ul>
+                            <li><a href="Sales?chapter=9#section-1-01" class="list-group-item">大客户业务的重要性</a></li>
+                            <li><a href="Sales?chapter=9#section-1-02" class="list-group-item">市场细分</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=9#section-2" class="list-group-item">大客户销售标准</a>
+                        <ul>
+                            <li><a href="Sales?chapter=9#section-2-01" class="list-group-item">销售标准</a></li>
+                            <li><a href="Sales?chapter=9#section-2-02" class="list-group-item">试乘试驾</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=9#section-3" class="list-group-item">大客户市场营销</a>
+                        <ul>
+                            <li><a href="Sales?chapter=9#section-3-01" class="list-group-item">市场营销计划</a></li>
+                            <li><a href="Sales?chapter=9#section-3-02" class="list-group-item">市场营销预算</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=9#section-4" class="list-group-item">大客户售后管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=9#section-4-01" class="list-group-item">隔夜维修</a></li>
+                            <li><a href="Sales?chapter=9#section-4-02" class="list-group-item">便捷出行</a></li>
+                            <li><a href="Sales?chapter=9#section-4-03" class="list-group-item">备件快速交付</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=9#section-4" class="list-group-item">大客户部门管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=9#section-5-01" class="list-group-item">激励计划</a></li>
+                            <li><a href="Sales?chapter=9#section-5-02" class="list-group-item">大客户中心关键绩效指标</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="padding-left:15px;">
+                <a href="Sales?chapter=10#chapter10" class="list-group-item">第十章：衍生业务管理</a>
+                <ul>
+                    <li>
+                        <a href="Sales?chapter=10#section-1" class="list-group-item">二手车管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=10#section-1-01" class="list-group-item">二手车业务</a></li>
+                            <li><a href="Sales?chapter=10#section-1-02" class="list-group-item">二手车销售</a></li>
+                            <li><a href="Sales?chapter=10#section-1-03" class="list-group-item">Das WeltAuto申请流程</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=10#section-2" class="list-group-item">精品管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=10#section-2-01" class="list-group-item">销售方法与流程</a></li>
+                            <li><a href="Sales?chapter=10#section-2-02" class="list-group-item">产品与市场营销</a></li>
+                            <li><a href="Sales?chapter=10#section-2-03" class="list-group-item">库存管理</a></li>
+                            <li><a href="Sales?chapter=10#section-2-04" class="list-group-item">绩效考核点</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Sales?chapter=10#section-3" class="list-group-item">汽车金融与保险管理</a>
+                        <ul>
+                            <li><a href="Sales?chapter=10#section-3-01" class="list-group-item">汽车金融产品与服务</a></li>
+                            <li><a href="Sales?chapter=10#section-3-02" class="list-group-item">汽车保险服务与出险处理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="search_box" class="form-inline pull-right" style="margin-right:35px;display:none">
+            <div class="input-group">
+                <input class="form-control" id="searchstr" name="searchstr" placeholder="关键字" aria-describedby="search_btn" />
+                <span class="input-group-addon" id="search_btn" style="cursor:pointer">页内查找</span>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</div>

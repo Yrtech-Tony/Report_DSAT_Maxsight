@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var curYear = DateTime.Now.Year;
+    var curMonth = DateTime.Now.Month;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <ul class="list-group">
+                <a class="list-group-item"><h4>销售流程质量评估</h4><h4 class="english">QSP Evaluation</h4></a>
+                <a href="DealerGuide" class="list-group-item">指导手册<br><span class="english">Guideline</span></a>
+                <a href="QuarterlyReport" class="list-group-item">季度报告<br><span class="english">Quarterly Report</span></a>
+                <a href="Complaint" class="list-group-item">申诉结果反馈<br><span class="english">Appeal Feedback</span></a>
+                <a href="ComplaintVideo" class="list-group-item">申诉结果反馈视频<br><span class="english">Appeal Feedback Video</span></a>
+            </ul>
+        </div>
+
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</div>

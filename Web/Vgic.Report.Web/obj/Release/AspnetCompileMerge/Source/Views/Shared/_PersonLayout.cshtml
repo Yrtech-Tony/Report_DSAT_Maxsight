@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "经销商人员信息提报";
+    var curYear = DateTime.Now.Year;
+    var curMonth = DateTime.Now.Month;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <ul class="list-group">
+                <a href="#" class="list-group-item"><h4>经销商人员信息提报</h4><h4 class="english">Dealer Staff Submission</h4></a>
+                <a href="/Person/InfoSearch" class="list-group-item">经销商人员报告<br><span class="english">Dealer Staff Information</span></a>
+                @*@if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop")
+                {
+                    <a href="/Person/InfoSave" class="list-group-item">经销商人员信息登记<br><span class="english">Dealer Staff</span></a>
+                }*@
+            </ul>
+        </div>
+        @RenderBody()
+        @RenderSection("scripts", required: false)
+    </div>
+</div>

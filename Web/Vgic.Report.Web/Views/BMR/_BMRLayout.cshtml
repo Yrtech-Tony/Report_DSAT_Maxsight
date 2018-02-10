@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "经营管理报告";
+    var curYear = DateTime.Now.Year;
+    var curMonth = DateTime.Now.Month;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <ul class="list-group">
+                <a class="list-group-item"><h4>经营管理报告</h4><h4 class="english">BMR</h4></a>
+                <a href="DealerGuide" class="list-group-item">指导手册<br><span class="english">Guideline</span></a>
+                <a href="QuarterlyReport" class="list-group-item">季度报告<br><span class="english">Quarterly Report</span></a>
+            </ul>
+        </div>
+
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</div>

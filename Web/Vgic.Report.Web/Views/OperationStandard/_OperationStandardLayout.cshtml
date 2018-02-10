@@ -1,0 +1,265 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "经销商运营管理规范";
+}
+<link href="~/Content/bootstrap/css/BootSideMenu.css" rel="stylesheet" />
+<style>
+    p {
+        text-indent: 2em;
+        text-align: justify;
+    }
+
+    p, span, div {
+        font-size: 13px;
+    }
+    .section-bg {
+        background: url(../../Content/images/OperationStandard/Sales/chapter10/03.png);
+        padding-top: 350px;
+    }
+     .section-title-page {
+        background-color: rgb(31,78,121);
+        color: white;
+        padding: 25px;
+        border-top-right-radius: 100px;
+    }
+
+        .section-title-page a {
+            color: #ddd;
+            font-weight: 400;
+        }
+
+            .section-title-page a:hover {
+                color: white;
+                font-weight: 400;
+            }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .per80-width {
+        width: 80%;
+    }
+
+    .per60-width {
+        width: 60%;
+    }
+
+    ul a {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 800;
+        padding-bottom:10px;
+    }
+
+    h4 {
+        font-size: 14px;
+        font-weight: 600;
+        padding-bottom:5px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+</style>
+@section scripts{
+    <script src="~/Content/bootstrap/js/BootSideMenu.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fixed-nav').BootSideMenu({ side: "right", width: 300, autoClose: true });
+            $('#fixed-nav').show();
+
+            if (window.location.search != "") {
+                $("#search_box").show();
+
+                var path = window.location.href.substr(window.location.href.lastIndexOf("?") + 1);
+                var id = path.replace(/#/g, "").replace(/=/g, "").replace(/-/g, "");
+                var href = '';
+                if (window.location.pathname.indexOf("Aftersales")>0) {
+                    href = "Aftersales?" + path;
+                } else {
+                    href = "Sales?" + path;
+                }
+                var hashA = $("#fixed-nav a[href='" + href + "']").attr("id", id).addClass("active");
+                
+                $("#fixed-nav > div > div").scrollTop(hashA.get(0).offsetTop - 60);
+                $("#fixed-nav a").click(function () {
+                    $("#fixed-nav > div > div").scrollTop(this.offsetTop - 60);
+                })
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+    (function ($) {
+        $.fn.fixDiv = function (options) {
+            var defaultVal = {
+                top: 10
+            };
+            var obj = $.extend(defaultVal, options);
+            $this = this;
+            var _top = $this.offset().top;
+            var _left = $this.offset().left;
+            $(window).scroll(function () {
+                var _currentTop = $this.offset().top;
+                var _scrollTop = $(document).scrollTop();
+                if (_scrollTop > _top) {
+                    $this.offset({
+                        top: _scrollTop + obj.top,
+                        left: _left
+                    });
+                } else {
+                    $this.offset({
+                        top: _top,
+                        left: _left
+                    });
+                }
+            });
+            return $this;
+        };
+    })(jQuery);
+    $(function () {
+        $("#search_box").fixDiv({ top: 10 });
+        $('#search_btn').click(highlight);//点击search时，执行highlight函数；
+        $('#searchstr').keydown(function (e) {
+            var key = e.which;
+            if (key == 13) highlight();
+        })
+
+        var i = 0;
+        var sCurText;
+        function highlight() {
+            clearSelection();//先清空一下上次高亮显示的内容；
+
+            var flag = 0;
+            var bStart = true;
+
+            $('#tip').text('');
+            $('#tip').hide();
+            var searchText = $('#searchstr').val();
+            var _searchTop = $('#searchstr').offset().top + 30;
+            var _searchLeft = $('#searchstr').offset().left;
+            if ($.trim(searchText) == "") {
+                showTips("请输入查找关键字名", _searchTop, 3, _searchLeft);
+                return;
+            }
+
+            var searchText = $('#searchstr').val();//获取你输入的关键字；
+            var regExp = new RegExp(searchText, 'g');//创建正则表达式，g表示全局的，如果不用g，则查找到第一个就不会继续向下查找了；
+            var content = $("#container").text();
+            console.log(content);
+            if (!regExp.test(content)) {
+                showTips("没有找到要查找的关键字", _searchTop, 3, _searchLeft);
+                return;
+            } else {
+                if (sCurText != searchText) {
+                    i = 0;
+                    sCurText = searchText;
+                }
+            }
+
+            $('p,h4,h3,h5,span,a').each(function () {
+                var html = $(this).html();
+                var newHtml = html.replace(regExp, '<span class="highlight">' + searchText + '</span>');//将找到的关键字替换，加上highlight属性；
+
+                $(this).html(newHtml);//更新；
+                flag = 1;
+            });
+
+            if (flag == 1) {
+                if ($(".highlight").size() > 1) {
+                    var _top = $(".highlight").eq(i).offset().top + $(".highlight").eq(i).height();
+                    var _tip = $(".highlight").eq(i).parent().find("strong").text();
+                    if (_tip == "") _tip = $(".highlight").eq(i).parent().parent().find("strong").text();
+                    var _left = $(".highlight").eq(i).offset().left;
+                    var _tipWidth = $("#tip").width();
+                    if (_left > $(document).width() - _tipWidth) {
+                        _left = _left - _tipWidth;
+                    }
+                    $("#tip").html(_tip).show();
+                    $("#tip").offset({ top: _top, left: _left });
+                    //$("#search_btn").html("查找下一个");
+                } else {
+                    var _top = $(".highlight").offset().top + $(".highlight").height();
+                    var _tip = $(".highlight").parent().find("strong").text();
+                    var _left = $(".highlight").offset().left;
+                    $('#tip').show();
+                    $("#tip").html(_tip).offset({ top: _top, left: _left });
+                }
+                $("html, body").animate({ scrollTop: _top - 50 });
+                i++;
+                if (i > $(".highlight").size() - 1) {
+                    i = 0;
+                }
+            }
+        }
+        function clearSelection() {
+            $('p,h4,h3,h5,span,a').each(function () {
+                //找到所有highlight属性的元素；
+                $(this).find('.highlight').each(function () {
+                    $(this).replaceWith($(this).html());//将他们的属性去掉；
+                });
+            });
+        }
+
+        //mask
+        var tipsDiv = '<div class="tipsClass"></div>';
+        $('body').append(tipsDiv);
+        function showTips(tips, height, time, left) {
+            var windowWidth = document.documentElement.clientWidth;
+            $('.tipsClass').text(tips);
+            $('div.tipsClass').css({
+                'top': height + 'px',
+                'left': left + 'px',
+                'position': 'absolute',
+                'padding': '8px 6px',
+                'background': '#000000',
+                'font-size': 14 + 'px',
+                'font-weight': 900,
+                'margin': '0 auto',
+                'text-align': 'center',
+                'width': 'auto',
+                'color': '#fff',
+                'border-radius': '2px',
+                'opacity': '0.8',
+                'box-shadow': '0px 0px 10px #000',
+                '-moz-box-shadow': '0px 0px 10px #000',
+                '-webkit-box-shadow': '0px 0px 10px #000'
+            }).show();
+            setTimeout(function () { $('div.tipsClass').fadeOut(); }, (time * 1000));
+        }
+    })
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 menu">
+            <ul class="list-group" style="list-style: none;">
+                <li><a class="list-group-item"><h4>经销商运营管理规范</h4><h4 class="english">Dealer Operation Standard</h4></a></li>
+                <li>
+                    <a href="Sales" class="list-group-item list-group-active">售前<br><span class="english">Sales</span></a>
+                </li>
+                <li> <a href="Aftersales" class="list-group-item">售后<br><span class="english">Aftersales</span></a> </li>
+            </ul>
+        </div>
+       
+
+        <div id="search_box" class="form-inline pull-right" style="margin-right:35px;display:none">
+            <div class="input-group">
+                <input class="form-control" id="searchstr" name="searchstr" placeholder="关键字" aria-describedby="search_btn" />
+                <span class="input-group-addon" id="search_btn" style="cursor:pointer">页内查找</span>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</div>

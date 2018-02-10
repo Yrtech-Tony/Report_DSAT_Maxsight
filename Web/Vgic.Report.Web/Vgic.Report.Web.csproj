@@ -1,0 +1,1174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{832734DB-03F9-45B9-82EC-2259EC2D1CE2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vgic.Report.Web</RootNamespace>
+    <AssemblyName>Vgic.Report.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aliyun.OpenServices">
+      <HintPath>.\Aliyun.OpenServices.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>.\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics3.Documents.Excel.v11.1">
+      <HintPath>..\packages\Infragistics.Excel.10.2\Infragistics3.Documents.Excel.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SevenZipSharp">
+      <HintPath>.\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\AuthenAdminAttribute.cs" />
+    <Compile Include="Attributes\LogFilter.cs" />
+    <Compile Include="Common\SelectListTool.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ACScoreController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BestPracticeController.cs" />
+    <Compile Include="Controllers\BMRController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\AnnualStarDealerController.cs" />
+    <Compile Include="Controllers\FiveStarDealerController.cs" />
+    <Compile Include="Controllers\OperationStandardController.cs" />
+    <Compile Include="Controllers\QSPController.cs" />
+    <Compile Include="Controllers\DOSAuditController.cs" />
+    <Compile Include="Controllers\CSSOEMController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ColumModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\DSATReportServer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="7z64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap\css\BootSideMenu.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\BootSideMenu.js" />
+    <Content Include="Content\bootstrap\js\npm.js" />
+    <Content Include="Content\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\news.css" />
+    <Content Include="Content\css\scroll-news.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\stylehht.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\images\1.png" />
+    <Content Include="Content\images\2-1.png" />
+    <Content Include="Content\images\2.png" />
+    <Content Include="Content\images\3.png" />
+    <Content Include="Content\images\4-1.png" />
+    <Content Include="Content\images\4.png" />
+    <Content Include="Content\images\5.png" />
+    <Content Include="Content\images\6.png" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\bgfb.png" />
+    <Content Include="Content\images\loader.gif" />
+    <Content Include="Content\images\login-logo.png" />
+    <Content Include="Content\images\loginbg.jpg" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter-3.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter1.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter10.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter11.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter12.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter13.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter14.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter15.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter16.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter17.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter18.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter19.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter2.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter20.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter21.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter22.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter23.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter24.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter25.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter26.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter27.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter28.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter29.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter30.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter31.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter32.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter33.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter34.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter35.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter36.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter37.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter38.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter39.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter4.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter40.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter41.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter42.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter43.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter44.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter45.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter46.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter47.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter48.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter49.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter5.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter50.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter51.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter52.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter53.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter54.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter55.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter56.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter57.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter58.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter59.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter6.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter60.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter61.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter62.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter63.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter64.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter65.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter66.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter67.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter68.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter69.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter7.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter70.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter71.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter72.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter73.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter8.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter2\chapter9.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\1.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\10.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\11.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\12.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\13.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\14.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\15.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\16.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\17.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\18.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\19.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\2.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\20.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\21.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\22.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\23.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\24.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\25.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\26.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\27.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\28.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\29.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\3.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\30.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\31.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\32.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\33.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\34.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\35.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\4.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\5.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\6.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\7.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\8.png" />
+    <Content Include="Content\images\OperationStandard\Aftersales\chapter3\9.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\27.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\28.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\29.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\30.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\31.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\32.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\33.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\34.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\35.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\36.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\37.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\38.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\39.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\40.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\41.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\42.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\43.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\44.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\45.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\46.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\47.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\48.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\49.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\50.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\51.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\52.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\53.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\54.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\55.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\56.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\57.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\58.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\59.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\60.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\61.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\62.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\63.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\64.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter10\65.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-055.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-1.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-2.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-27.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-28.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-29.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-3.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-30.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-31.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-32.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-33.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-34.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-35.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-36.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-37.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-38.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-39.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-4.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-40.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-41.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-42.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-43.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-44.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-45.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-46.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-47.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-48.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-49.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-5.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-50.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-51.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-52.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-53.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-54.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-55.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-56.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-57.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-58.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-59.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-6.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-60.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-61.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-62.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-63.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-64.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-65.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-67.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-68.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-69.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-7.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-70.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-71.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-72.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-73.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-74.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-75.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-76.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-77.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-78.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-79.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-8.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-80.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-81.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-82.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-83.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-88.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-89.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-9.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter1\chapter-66.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\01.jpg" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\27.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\28.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\29.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\30.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\31.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\32.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter2\33.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter3\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\27.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\28.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\29.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\30.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\31.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\32.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\33.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\34.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\35.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\36.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\37.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\38.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\39.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\40.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\41.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\42.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\43.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\44.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\45.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\46.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\47.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\48.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\49.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\50.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\51.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\52.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\54.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\55.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\56.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\57.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\58.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\59.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\60.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\61.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\62.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\63.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\64.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\65.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\66.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\67.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\68.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\69.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\70.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\71.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\73.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\74.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\75.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\76.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\77.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\78.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter4\79.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter5\26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter6\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter7\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\100.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\101.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\102.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\103.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\104.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\105.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\106.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\107.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\108.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\109.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\110.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\111.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\112.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\113.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\114.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\115.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\116.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\117.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\118.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\119.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\120.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\121.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\122.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\123.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\124.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\125.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\126.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\127.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\128.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\129.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\130.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\131.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\132.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\134.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\135.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\136.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\137.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\138.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\139.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\140.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\141.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\142.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\143.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\144.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\145.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\146.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\147.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\148.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\149.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\150.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\151.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\152.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\27.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\28.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\29.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\30.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\31.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\32.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\33.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\34.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\35.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\36.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\37.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\38.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\39.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\40.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\41.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\42.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\43.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\44.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\45.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\46.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\47.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\48.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\49.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\50.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\51.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\52.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\53.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\54.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\55.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\56.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\57.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\58.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\59.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\60.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\61.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\62.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\63.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\64.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\65.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\66.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\67.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\68.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\69.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\70.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\71.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\72.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\73.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\74.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\75.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\76.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\77.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\78.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\79.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\80.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\81.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\82.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\83.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\84.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\85.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\86.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\87.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\88.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\89.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\90.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\91.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\92.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\93.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\94.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\95.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\96.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\97.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\98.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter8\99.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\01.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\02.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\03.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\04.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\05.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\06.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\07.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\08.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\09.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\10.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\11.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\12.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\13.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\14.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\15.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\16.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\17.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\18.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\19.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\20.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\21.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\22.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\23.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\24.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\25.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\26.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\27.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\28.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\29.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\30.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\31.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\32.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\33.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\34.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\35.png" />
+    <Content Include="Content\images\OperationStandard\Sales\chapter9\36.png" />
+    <Content Include="Content\images\switch.png" />
+    <Content Include="Content\images\uploadify-cancel.png" />
+    <Content Include="Content\images\v-img.png" />
+    <Content Include="Content\images\x-click.png" />
+    <Content Include="Content\images\x.png" />
+    <Content Include="Content\My97DatePicker\calendar.js" />
+    <Content Include="Content\My97DatePicker\lang\en.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\My97DatePicker\WdatePicker.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Content\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap-paginator.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\FontAwesome.otf" />
+    <Content Include="Content\js\My97DatePickerBeta.zip" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\PublishProfiles\VGIC.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\comm.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.twbsPagination.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\base64.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\aes\aes-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\aes\aes.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\cbc\cbc-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\cbc\cbc.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-md5\crypto-md5.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-sha1-hmac-pbkdf2-marc4\crypto-sha1-hmac-pbkdf2-marc4.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-sha1-hmac-pbkdf2-ofb-aes\crypto-sha1-hmac-pbkdf2-ofb-aes.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-sha1-hmac-pbkdf2-rabbit\crypto-sha1-hmac-pbkdf2-rabbit.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-sha1-hmac-pbkdf2\crypto-sha1-hmac-pbkdf2.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-sha1\crypto-sha1.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-sha256\crypto-sha256.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto\crypto-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto\crypto.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\hmac\hmac-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\hmac\hmac.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\marc4\marc4-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\marc4\marc4.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\md5\md5-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\md5\md5.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\ofb\ofb-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\ofb\ofb.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\pbkdf2\pbkdf2-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\pbkdf2\pbkdf2.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\rabbit\rabbit-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\rabbit\rabbit.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\sha1\sha1-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\sha1\sha1.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\sha256\sha256-min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\sha256\sha256.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\custom.html" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\dump.php" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\events.html" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\jquery\all_runtimes.html" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\jquery\jquery_ui_widget.html" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\jquery\queue_widget.html" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\jquery\s3.php" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\examples\upload.php" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ar.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\az.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\bs.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\cs.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\cy.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\da.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\de.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\el.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\en.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\es.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\et.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\fa.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\fi.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\fr.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\he.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\hr.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\hu.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\hy.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\id.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\it.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ja.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ka.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\kk.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\km.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ko.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\lt.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\lv.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\mn.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ms.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\nl.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\pl.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\pt_BR.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ro.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\ru.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\sk.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\sq.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\sr.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\sr_RS.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\sv.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\th_TH.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\tr.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\uk_UA.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\zh_CN.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\i18n\zh_TW.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\done.gif" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\error.gif" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.plupload.queue\jquery.plupload.queue.min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.ui.plupload\img\loading.gif" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\jquery.ui.plupload\jquery.ui.plupload.min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\moxie.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\moxie.min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\Moxie.swf" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\Moxie.xap" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\plupload.dev.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\plupload.full.min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\js\plupload.min.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\license.txt" />
+    <Content Include="Scripts\oss-upload-direct\upload.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\scroll-news.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\oss-upload-direct\lib\crypto1\crypto-1.0.zip" />
+    <Content Include="Scripts\oss-upload-direct\lib\plupload-2.1.2\readme.md" />
+    <None Include="Service References\DSATReportServer\configuration91.svcinfo" />
+    <None Include="Service References\DSATReportServer\configuration.svcinfo" />
+    <None Include="Service References\DSATReportServer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DSATReportServer\service.wsdl" />
+    <None Include="Service References\DSATReportServer\Service1.disco" />
+    <None Include="Service References\DSATReportServer\service.disco" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.ACScoreDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.AreaDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.CodeNameDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.GroupDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.PictureDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.ShopDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.StaffInfoDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.UserInfoDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Person\InfoSearch.cshtml" />
+    <Content Include="Views\Person\InfoDetail.cshtml" />
+    <Content Include="Views\Shared\_PersonLayout.cshtml" />
+    <Content Include="Views\Person\InfoSave.cshtml" />
+    <Content Include="Views\Person\InfoEdit.cshtml" />
+    <Content Include="Views\ACScore\Index.cshtml" />
+    <Content Include="Views\ACScore\_PartialEdit.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\CSSOEM\_CSSOEMLayout.cshtml" />
+    <Content Include="Views\CSSOEM\QuarterlyReport.cshtml" />
+    <Content Include="Views\CSSOEM\MonthReport.cshtml" />
+    <Content Include="Views\CSSOEM\Complaint.cshtml" />
+    <Content Include="Views\CSSOEM\DealerGuide.cshtml" />
+    <Content Include="Views\OperationStandard\_OperationStandardLayout.cshtml" />
+    <Content Include="Views\DOSAudit\Complaint.cshtml" />
+    <Content Include="Views\DOSAudit\DealerGuide.cshtml" />
+    <Content Include="Views\DOSAudit\QuarterlyReport.cshtml" />
+    <Content Include="Views\QSP\_QSPLayout.cshtml" />
+    <Content Include="Views\QSP\Complaint.cshtml" />
+    <Content Include="Views\QSP\DealerGuide.cshtml" />
+    <Content Include="Views\QSP\QuarterlyReport.cshtml" />
+    <Content Include="Views\AnnualStarDealer\_AnnualStarDealerLayout.cshtml" />
+    <Content Include="Views\AnnualStarDealer\Complaint.cshtml" />
+    <Content Include="Views\AnnualStarDealer\DealerGuide.cshtml" />
+    <Content Include="Views\AnnualStarDealer\QuarterlyReport.cshtml" />
+    <Content Include="Views\DOSAudit\_DOSAuditLayout.cshtml" />
+    <Content Include="Views\OperationStandard\Sales.cshtml" />
+    <Content Include="Views\BMR\_BMRLayout.cshtml" />
+    <Content Include="Views\BMR\QuarterlyReport.cshtml" />
+    <Content Include="Views\BMR\DealerGuide.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter1.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter2.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter3.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter4.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter5.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter6.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter7.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter83.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter9.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter10.cshtml" />
+    <Content Include="Views\OperationStandard\SalesChapter81.cshtml" />
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.CommentDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.VideoDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.VoteDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Views\OperationStandard\SalesChapter82.cshtml" />
+    <Content Include="Views\QSP\ComplaintVideo.cshtml" />
+    <Content Include="Views\BestPractice\_BestPracticeLayout.cshtml" />
+    <Content Include="Views\BestPractice\Document.cshtml" />
+    <Content Include="Views\BestPractice\Casebook.cshtml" />
+    <Content Include="Views\FiveStarDealer\Index.cshtml" />
+    <Content Include="Views\BestPractice\Video.cshtml" />
+    <Content Include="Views\BestPractice\Detail.cshtml" />
+    <Content Include="Views\OperationStandard\Aftersales.cshtml" />
+    <Content Include="Views\OperationStandard\_LayoutSales.cshtml" />
+    <Content Include="Views\OperationStandard\_LayoutAftersales.cshtml" />
+    <Content Include="Views\OperationStandard\AftersalesChapter1.cshtml" />
+    <Content Include="Views\OperationStandard\AftersalesChapter12.cshtml" />
+    <Content Include="Views\OperationStandard\AftersalesChapter2.cshtml" />
+    <Content Include="Views\OperationStandard\AftersalesChapter3.cshtml" />
+    <Content Include="Views\OperationStandard\AftersalesChapter4.cshtml" />
+    <Content Include="Views\OperationStandard\AftersalesChapter5.cshtml" />
+    <None Include="Service References\DSATReportServer\Service1.wsdl" />
+    <Content Include="Service References\DSATReportServer\Vgic.Report.Web.DSATReportServer.NoticeDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\images\OperationStandard\Aftersales\chapter1\" />
+    <Folder Include="Views\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DSATReportServer\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50256</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50256/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

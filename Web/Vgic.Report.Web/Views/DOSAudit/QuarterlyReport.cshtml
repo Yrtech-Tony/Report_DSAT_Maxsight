@@ -1,0 +1,238 @@
+﻿@{
+
+    Layout = "~/Views/DOSAudit/_DOSAuditLayout.cshtml";
+    ViewBag.Title = "标准检查-季度报告";
+    var curYear = DateTime.Now.Year;
+}
+@section scripts{
+    <script type="text/javascript" language="javascript">
+        var download_file = { iframe: undefined };
+        var roleType = "@ViewBag.RoleType";
+        var countPerPage = @ViewBag.CountPerPage;
+        var pageCount = 1;
+        var scoreList = [];
+        $(function() {
+            $(".menu .list-group a.list-group-item").eq(2).addClass("list-group-active");
+
+            $('.i,.opens').click(function(){
+                $('.i').children("font").toggleClass("other");
+                $('#searchForm').slideToggle();
+                $('#searchForm').toggleClass('none');
+                $('.opens').slideToggle();
+                $('.opens').toggleClass('none');
+            });
+
+            $("#btnSearch").click(function () {
+                SearchShopFileInfo();
+            });
+            $("#btnCustomerSearch").click(function () {
+                SearchShopFileInfo();
+            });
+            
+            $("#btnDownloadReport").click(function(){
+                alert("正在下载...");
+                var shopCode = "";
+                $("input[name='nDealerID[]'][checked='checked']").each(function(){
+                    shopCode+=($(this).val()+";");
+                });
+
+                var areaCode =  $("input[name='sArea'][checked='checked']").val();
+                var groupCode =  $("input[name='sDealerGroup[]'][checked='checked']").val();
+                $.get("DownloadFiles",{
+                    areaCode:areaCode,
+                    groupCode:groupCode,
+                    shopCode:shopCode,
+                    year : $("input[name='nYear'][checked='checked']").val(),
+                    quarterormonth:$("input[name='nDateSort'][checked='checked']").val(),
+                    type:"QuarterReport"
+                }, function(data){
+                    if(data){
+                        if(data.Status){
+                            window.location.href ="DownloadFile?file="+ data.File;
+                            closealert();
+                        }else{
+                            alert(data.ErrorMsg);
+                        }
+                    }
+                });
+            });
+
+            if(roleType == "S"|| roleType=="SL"){
+                $("#searchArea").show();
+            }else if(roleType=="02"||roleType=="01"){
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchArea').find('ul').find('li');
+                $(li).click();
+                $('#searchArea').find('th').find('a').remove();
+            }else if(roleType == "G") {
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchDealerGroup').find('ul').find('li');
+                $(li).click();
+                $('#searchDealerGroup').find('th').find('a').remove();
+            }
+            else{
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var dealerUl = $('#searchDealer').show().find('ul');
+
+                var li = $("<li bChk='2' onclick='dealerLiClk(this)'></li>").html("@ViewBag.ShopNameForCurrentUser").append($("<input type='checkbox' name='nDealerID[]' value='" + "@ViewBag.ShopCodeForCurrentUser" + "'>"));
+                dealerUl.append(li);
+                $(li).click();
+            }
+
+            $("#btnSearch").click();
+        });
+
+        function SearchShopFileInfo(pageNo){
+            var shopCode = "";
+            $("input[name='nDealerID[]'][checked='checked']").each(function(){
+                shopCode+=($(this).val()+";");
+            });
+            pageNo=pageNo?pageNo:1;
+            $.ajax("QuarterSearch", {
+                method: "GET",
+                data: {
+                    areaCode: $("input[name='sArea'][checked='checked']").val(),
+                    groupCode:$("input[name='sDealerGroup[]'][checked='checked']").val(),
+                    shopCode: shopCode,
+                    year: $("input[name='nYear'][checked='checked']").val(),
+                    quarterormonth: $("input[name='nDateSort'][checked='checked']").val(),
+                    pageNum: pageNo?pageNo:1,
+
+                },
+                type: 'json',
+                success: function (data) {
+                    SearchShopFileInfoSuccess(data);
+                    pageCount = Math.ceil(data.totalCount / countPerPage);
+                    initPages(pageNo, pageCount,SearchShopFileInfo);
+                }
+            });
+        }
+
+        function SearchShopFileInfoSuccess(data){
+            var table = $(".comm-table-div>table");
+            table.find("tr:not(:first-child)").remove();
+            var path = "DownloadFile?file=~/ReportFiles/DOSAudit/QuarterReport/";
+            $.each(data.shopInfoList, function (index, item) {
+                var oprations = "";
+                oprations = "<a href='"+path+item.FileName+"'>下载</a>";
+                var tr = $("<tr class='active'></tr>");
+                var col1 = $("<td></td>").html(oprations);
+                var col3 = $("<td></td>").html(item.FileName);
+                var col4 = $("<td class='text-center'></td>").html(item.ShopName);
+                var col5 = $("<td></td>").html(item.AreaName);
+                var col6 = $("<td></td>").html(item.GroupName);
+                var col7 = $("<td></td>").html(item.ShopType);
+                var col8 = $("<td></td>").html(ChangeDateFormat(item.UploadDate));
+                tr.append(col1).append(col3).append(col4).append(col5).append(col6).append(col7).append(col8);
+
+                table.append(tr);
+            });
+        }
+    </script>
+
+}
+<div id="container" class="col-md-10">
+    <form id="searchForm"  style="display:none;">
+        <div id="inputBox" style="display:none;"></div>
+        <input type="hidden" name="type" value="">
+        <table class="table table-bordered">
+            <tr id="searchArea" style="display:none;">
+                <th width="85" align="center" class="switch">
+                    Region<a href="javascript:;" id="toGroup" style="display: none;"></a>
+                </th>
+                <td>
+                    <ul class="list-inline">
+                        @foreach (var item in ((UserInfoDto)Session["LoginUser"]).SmallAreaList)
+                        {
+                            <li bchk="2" class="">@item.AreaName<input type="radio" name="sArea" value="@item.AreaCode"></li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr id="searchDealerGroup" style="display:none;">
+                <th width="85" align="center" class="switch">
+                    Dealer Group<a href="javascript:;" id="toArea" style="display: none;"></a>
+                </th>
+                <td>
+                    <ul class="list-inline">
+                        @foreach (var item in ((UserInfoDto)Session["LoginUser"]).GroupList)
+                        {
+                         
+                                <li bchk="2" class="">@item.GroupName<input type="checkbox" name="sDealerGroup[]" value="@item.GroupCode"></li>
+                            
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th align="center">Dealer</th>
+                <td id="searchDealer">
+                    <ul class="list-inline"></ul>
+                </td>
+            </tr>
+            <tr>
+                <th align="center">Wave</th>
+                <td id="searchDate">
+                    <ul class="list-inline">
+                        @for (int i = curYear; i > curYear - 8; i--)
+                        {
+                            if (i == curYear)
+                            {
+                                <li bchk="1" class="active">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i" checked="checked"></li>
+                            }
+                            else
+                            {
+                                <li bchk="2" class="">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i"></li>
+                            }
+                        }
+                    </ul>
+                    <ul class="list-inline">
+                        @for (int i = 1; i <= 4; i++)
+                        {
+                            @*if (i == @ViewBag.CurrentQuarter)
+                            {
+                                <li bchk="1" class="active">Q @Html.Raw(i)<input type="radio" name="nDateSort" value="@i" checked="checked"></li>
+                            }
+                            else
+                            {*@
+                                <li bchk="2" class="">Q @Html.Raw(i)<input type="radio" name="nDateSort" value="@i"></li>
+                            @*}*@
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <button type="button" class="btn btn-default" id="clear">清&nbsp;空</button>
+                    <button type="button" class="btn btn-primary" id="btnSearch">查&nbsp;询</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div class="opens">开启搜索</div>
+    <div class="sechform"><div class="collapse1 text-center"><div class="i"><font></font></div></div></div>
+
+    <div class="pull-right">
+        <a href="javascript:;" id="btnDownloadReport" class="btn btn-primary">导出文件</a>
+    </div>
+    <div class="table-responsive comm-table-div" style="font-size:12px;">
+        <table class="table table-bordered table-hover" style="max-width:945px;">
+            <tr>
+                <th width="50">操作</th>
+                <th width="500">文件名</th>
+                <th width="120">经销商名称</th>
+                <th width="60">区域</th>
+                <th width="100">经销商集团</th>
+                <th width="100">经销商类型</th>
+                <th width="100">上传时间</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="pagination" class="pull-right">
+        <ul id="pageUl"></ul>
+    </div>
+</div>

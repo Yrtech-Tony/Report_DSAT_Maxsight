@@ -1,0 +1,91 @@
+﻿@using Vgic.Report.Web.DSATReportServer;
+@model Vgic.Report.Web.DSATReportServer.VideoDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "最佳案例分享视频详细";
+    var title = Model.VideoFileName == null ? "" : Model.VideoFileName.Substring(0, Model.VideoFileName.LastIndexOf("."));
+    var fullName = "http://vgic.oss-cn-beijing.aliyuncs.com/DSATReport/Best/" + Model.VideoFileName;
+}
+<script>
+    $(function () {
+        $("#commentBtn").click(function () {
+            $.post("Comment", {
+                id:$("#FileId").val(),
+                comment:$("#comment").val()
+            }, function (data) {
+                if (data.Status) {
+                    SearchComment();
+                }
+            })
+        });
+        SearchComment();
+    });
+    function SearchComment(pageNo) {
+        pageNo = pageNo ? pageNo : 1;
+
+        var id = $("#FileId").val();
+        $.get("CommentSearch", { id: id, pageNum: pageNo }, function (data) {
+            if (data.Status) {
+                $.each(data.ResultList, function (index, item) {
+                    var commentPanel = $("#comment_template").clone();                   
+                    commentPanel.find("#CommentUserId").html(item.InUserId);
+                    commentPanel.find("#CommentContent").html(item.CommentContent);
+                    commentPanel.removeClass("hidden");
+                    $(".media-list").append(commentPanel);
+
+                    initPages(pageNo, data.PageCount, SearchComment);
+                });
+            }
+        });
+    }
+</script>
+<div class="container">
+    <div class="row">
+        @Html.Hidden("FileId", Model.FileId)
+        @Html.Hidden("VideoFileName", Model.VideoFileName)
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <h4 class="title">@title</h4>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video src="@fullName" style="width: 100%; background-color: black" codecs="avc1.42E01E, mp4a.40.2"
+                       controls autoplay="autoplay" preload="Auto"></video>
+            </div>
+            <div class="media">
+                <div class="media-left text-center media-w">
+                    <i class="glyphicon glyphicon-thumbs-up text-info"></i>
+                    <br />
+                    <span id="VoteCount">@Model.VoteCount</span>
+                </div>
+                <div class="media-body">
+                    @foreach (VoteDto vote in ViewBag.Votes)
+                    {
+                        <i class="glyphicon glyphicon-user text-info"></i><span>@vote.VoteUserId</span>
+                    }
+                </div>
+            </div>
+            <hr />
+            <div>
+                <div class="form-group">
+                    <label for="comment">评论</label>
+                    <textarea class="form-control" id="comment" name="comment" placeholder="输入评论内容" style="height:60px"></textarea>
+                </div>
+                <button id="commentBtn" class="btn btn-default">发表评论</button>
+            </div>
+            <h4 class="mt20 mb15">全部评论</h4>
+            <ul class="media-list"></ul>
+            <div id="pagination" class="text-center">
+                <ul id="pageUl"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<li id="comment_template" class="media hidden">
+    <div class="media-left text-center media-w">
+        <i class="glyphicon glyphicon-user text-info"></i><br />
+        <span id="CommentUserId"></span>
+    </div>
+    <div class="media-body">
+        <p id="CommentContent"></p>
+    </div>
+</li>
+

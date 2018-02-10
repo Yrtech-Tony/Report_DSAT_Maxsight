@@ -1,0 +1,255 @@
+﻿@{
+    ViewBag.Title = "首页";
+}
+<link href="~/Content/css/news.css" rel="stylesheet" />
+@section scripts{
+    <script>
+        $(function () {
+            $('.i,.opens').click(function () {
+                $('.i').children("font").toggleClass("other");
+                $('#searchForm').slideToggle();
+                $('#searchForm').toggleClass('none');
+                $('.opens').slideToggle();
+                $('.opens').toggleClass('none');
+            });
+
+            $(".news-panel h4.remove i").click(function () {
+                $(".news-panel").remove();
+                $.get("../Base/CloseNotice", {}, function () { });
+            });
+
+            loadNotice();
+        });
+
+        function loadNotice() {
+            $(".news-panel ul").empty();
+            $.get("../Base/LoadTopNotice", {}, function (data) {
+                if (!data) {
+                    $(".news-panel").hide();
+                    return;
+                }
+
+                if (data.Status) {
+                    if (data.DataList && data.DataList.length > 0) {
+                        $.each(data.DataList, function (index, item) {
+                            var content = item.NoticeContent;
+                            var li = $("<a class='list-group-item remove'></a>");
+                            li.html(item.NoticeContent+"<br />"+"更新时间：" + item.InDateTime+'<i></i>');
+                            li.find("i").click(function () {
+                                $.post("../Base/UpdateNotice", { noticeId: item.NoticeId }, function (SaveData) {
+                                    if (SaveData.Status) {
+                                        loadNotice();
+                                    } else {
+                                        alert(SaveData.ErrMsg);
+                                    }
+                                })
+                            });
+                            $(".news-panel ul").append(li);
+                        });
+                        //$("#hotNews").show();
+                    } else {
+                        //$("#hotNews").hide();
+                    }
+                } else {
+                    alert(Data.ErrMsg);
+                }
+            });
+        }
+    </script>
+}
+
+
+<div class="row">
+    @if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+        || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+        || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+        || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+        || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+        || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+        || (Session["LoginUser"] as UserInfoDto).UserId == "vgic-lcv"
+        || (Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+        || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+        || (Session["LoginUser"] as UserInfoDto).UserId == "duanxiaoqing"
+                    )
+    {
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <img src="~/Content/images/1.png" class="img-responsive">
+            <ul class="list-group mt20">
+
+                <li href="#" class="list-group-item"><h4>经销商运营管理规范</h4><h4 class="english">Dealer Operation Standard</h4></li>
+                <li class="list-group-item"><a href="/OperationStandard/Sales">售前<br><span class="english">Sales</span></a></li>
+                <li class="list-group-item"><a href="/OperationStandard/Aftersales">售后<br><span class="english">Aftersales</span></a></li>
+            </ul>
+        </div>
+    }
+    @*@if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                    || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+                    || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                    || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                    || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+                    || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+                    || (Session["LoginUser"] as UserInfoDto).UserId == "vgic-lcv"
+                    || (Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+                    || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                    )
+        {
+            <div class="col-xs-2 col-sm-2 col-md-2 menu">
+                <img src="~/Content/images/1.png" class="img-responsive">
+                <ul class="list-group mt20">
+
+                    <li href="#" class="list-group-item"><h4>经销商运营管理规范</h4><h4 class="english">Dealer Operation Standard</h4></li>
+                    <li class="list-group-item">售前<br><span class="english">Sales</span></li>
+                    <li class="list-group-item">售后<br><span class="english">Aftersales</span></li>
+                </ul>
+            </div>
+        }*@
+    @if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "vgic-lcv"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "QSP"
+                 || (Session["LoginUser"] as UserInfoDto).UserId == "duanxiaoqing"
+                )
+    {
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <img src="~/Content/images/2.png" class="img-responsive">
+            <ul class="list-group mt20">
+
+                <li href="#" class="list-group-item"><h4>报告发布</h4><h4 class="english">Sales Quality Report</h4></li>
+                @if ((Session["LoginUser"] as UserInfoDto).UserId != "QSP")
+                {
+                    <li href="#" class="list-group-item"><a href="/DOSAudit/DealerGuide">标准检查<br><span class="english">DOS Audit</span></a></li>
+                    <li href="#" class="list-group-item"><a href="/CSSOEM/DealerGuide">销售满意度及中期关怀<br><span class="english">CSS+OEM Care</span></a></li>
+                    <li href="#" class="list-group-item"><a href="/QSP/DealerGuide">销售流程质量评估<br><span class="english">QSP Evaluation</span></a></li>
+                }
+                else
+                {
+                    <li href="#" class="list-group-item"><a href="/QSP/DealerGuide">销售流程质量评估<br><span class="english">QSP Evaluation</span></a></li>
+                }
+                @if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "duanxiaoqing")
+                {
+                    <li href="#" class="list-group-item"><a href="/AnnualStarDealer/DealerGuide">星级评定结果<br><span class="english">Annual Star Dealer</span></a></li>
+                }
+
+            </ul>
+        </div>
+    }
+    @if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                 || (Session["LoginUser"] as UserInfoDto).UserId == "QSP"
+                 || (Session["LoginUser"] as UserInfoDto).UserId == "duanxiaoqing"
+                )
+    {
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <img src="~/Content/images/3.png" class="img-responsive">
+            <ul class="list-group mt20">
+
+                <li href="#" class="list-group-item"><h4>最佳案例分享</h4><h4 class="english">Best Practice</h4></li>
+                <li class="list-group-item"><a href="/BestPractice/Video">视频<br><span class="english">Video</span></a></li>
+                <li href="#" class="list-group-item"><a href="/BestPractice/Document">文件<br><span class="english">Document</span></a></li>
+                <li href="#" class="list-group-item"><a href="/BestPractice/Casebook">案例手册<br><span class="english">Casebook</span></a></li>
+            </ul>
+        </div>
+    }
+    @if ((Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "BMR"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "duanxiaoqing"
+                )
+    {
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <img src="~/Content/images/4.png" class="img-responsive">
+            <ul class="list-group mt20">
+
+                <li href="#" class="list-group-item"><h4>经营管理报告</h4><h4 class="english">BMR</h4></li>
+                <li href="#" class="list-group-item"><a href="/BMR/QuarterlyReport">季度报告<br><span class="english">Quarterly Report</span></a></li>
+                @*<li href="#" class="list-group-item">下载BMR<br><span class="english">Download BMR</span></li>*@
+                <li href="#" class="list-group-item"><a href="/BMR/DealerGuide">指导手册<br><span class="english">Guideline</span></a></li>
+
+            </ul>
+        </div>
+    }
+    @if ((Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "duanxiaoqing"
+                )
+    {
+        @*<div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <img src="~/Content/images/5.png" class="img-responsive">
+            <ul class="list-group mt20">
+
+                <li class="list-group-item"><h4>五星级经销商视频</h4><h4 class="english">Five Star Dealer Video</h4></li>
+                <li class="list-group-item"><a href="/FiveStarDealer/Index">视频查看|下载</a>  <br><span class="english">Video Online | Download</span></li>
+                @*<li class="list-group-item">投票<br><span class="english">Vote</span></li>*@
+
+            @*</ul>*@
+        @*</div>*@
+    }
+    @if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "Shop"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "01"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "02"
+                || (Session["LoginUser"] as UserInfoDto).RoleTypeCode == "G"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "HR"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "vgic-lcv"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "vgic-training"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "CindyBao"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "VGIC"
+                )
+    {
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <img src="~/Content/images/6.png" class="img-responsive">
+            <ul class="list-group mt20">
+                <li href="#" class="list-group-item"><h4>经销商人员信息提报</h4><h4 class="english">Dealer Staff Data Submission</h4></li>
+
+                <li class="list-group-item"><a href="/Person/InfoSearch">经销商人员报告<br><span class="english">Dealer Staff Information</span></a></li>
+
+                @if ((Session["LoginUser"] as UserInfoDto).RoleTypeCode == "S"
+                || (Session["LoginUser"] as UserInfoDto).UserId == "HR"
+                
+                )
+                {
+                    <li class="list-group-item"><a href="/ACScore/Index">AC成绩查询<br><span class="english">AC Result</span></a></li>
+                }
+            </ul>
+        </div>
+    }
+    <div class="col-xs-2 col-sm-2 col-md-2 menu news-panel">
+        <h4 class="remove">更新通知<i></i></h4>
+        <ul class="list-group mt20">
+            <a href="#" class="list-group-item remove">销售满意度及中期关怀<br />已上传<br />更新时间：2016-8-23<i></i></a>
+            <a href="#" class="list-group-item remove">销售满意度及中期关怀<br />已上传<br />更新时间：2016-8-23<i></i></a>
+            <a href="#" class="list-group-item remove">销售满意度及中期关怀<br />已上传<br />更新时间：2016-8-23<i></i></a>
+            <a href="#" class="list-group-item remove">销售满意度及中期关怀<br />已上传<br />更新时间：2016-8-23<i></i></a>
+            <a href="#" class="list-group-item remove">销售满意度及中期关怀<br />已上传<br />更新时间：2016-8-23<i></i></a>
+        </ul>
+    </div>
+</div>

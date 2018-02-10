@@ -1,0 +1,310 @@
+﻿@using Vgic.Report.Web.DSATReportServer;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "五星经销商视频查看";
+    var curYear = DateTime.Now.Year;
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/crypto/crypto.js"></script>
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/hmac/hmac.js"></script>
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/sha1/sha1.js"></script>
+    <script src="~/Scripts/oss-upload-direct/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="~/Scripts/oss-upload-direct/lib/base64.js"></script>
+    <script src="~/Scripts/oss-upload-direct/upload.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        var roleType = "@ViewBag.RoleType";
+
+        $(function () {
+            $('.i,.opens').click(function () {
+                $('.i').children("font").toggleClass("other");
+                $('#searchForm').slideToggle();
+                $('#searchForm').toggleClass('none');
+                $('.opens').slideToggle();
+                $('.opens').toggleClass('none');
+            });
+            $("#postfiles").click(function () {
+                uploader.start();
+            });
+
+            $("#btnSearch,#btnCustomerSearch").click(function () {
+                Search();
+            });
+            $("#btnSearch").click();
+
+            var osspath = "DSATReport/FiveStar/";
+            var uploader = init_uploader({
+                filepath: osspath,
+                uploaded: function (args) {
+                    $.post("Save", {
+                        VideoFileName: args.fileName
+                    }, function () {
+                        Search();
+                        $("#UploadModal").modal('hide');
+                    });
+                }
+            });           
+
+            if(roleType == "S"|| roleType=="SL"){
+                $("#searchArea").show();
+            }else if(roleType=="02"||roleType=="01"){
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchArea').find('ul').find('li');
+                $(li).click();
+                $('#searchArea').find('th').find('a').remove();
+            }else if(roleType == "G") {
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchDealerGroup').find('ul').find('li');
+                $(li).click();
+                $('#searchDealerGroup').find('th').find('a').remove();
+            }
+            else{
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var dealerUl = $('#searchDealer').show().find('ul');
+                var li = $("<li bChk='2' onclick='dealerLiClk(this)'></li>").html("@ViewBag.ShopNameForCurrentUser").append($("<input type='checkbox' name='nDealerID[]' value='" + @ViewBag.ShopCodeForCurrentUser + "'>"));
+                dealerUl.append(li);
+                $(li).click();
+            }
+
+           
+        });
+
+        function Search(pageNo) {
+            pageNo = pageNo ? pageNo : 1;
+
+            var shopCode = "";
+            $("input[name='nDealerID[]'][checked='checked']").each(function () {
+                shopCode += ($(this).val() + ";");
+            });
+            $.ajax("Search", {
+                method: "GET",
+                data: {
+                    areaCode: $("input[name='sArea'][checked='checked']").val(),
+                    groupCode: $("input[name='sDealerGroup[]'][checked='checked']").val(),
+                    shopCode: shopCode,
+                    year: $("input[name='nYear'][checked='checked']").val(),
+                    pageNum: pageNo,
+                    pageSize: 8,
+                    filename: $("#filename").val(),
+                    random: Math.random()
+                },
+                type: 'json',
+                success: function (data) {
+                    if (data.Status) {
+                        SearchSuccess(data);
+                        initPages(pageNo, data.PageCount, Search);
+                    } else {
+                        alert(data.ErrMsg);
+                    }
+                }
+            });
+        }
+
+        function play(obj) {
+            var fileName = $(obj).parents(".thumbnail").find("#VideoFileName").val();
+            fileName = "http://yrtech.oss-cn-beijing.aliyuncs.com/DSATReport/FiveStar/" + fileName;
+            $("#PlayModal").modal("show").find("video").prop("src", fileName);
+            $("#PlayModal").on('hidden.bs.modal', function (e) {
+                $("#PlayModal").find("video").prop("src", "");
+            });
+        }
+
+        function SearchSuccess(data) {
+            $("#dataResult").empty();
+            $.each(data.ResultList, function (index, item) {
+                var videoPanel = $("#videoPanelTemplate").clone().removeClass("hidden");
+                videoPanel.find("#VoteCount").html(item.VoteCount + "票");
+                videoPanel.find("#VideoFileName").val(item.VideoFileName);
+                videoPanel.find("#FileId").val(item.FileId);
+                videoPanel.find(".title").html(item.VideoFileName.substr(0, item.VideoFileName.lastIndexOf(".")));
+
+                videoPanel.find("#Vote").click(function () { vote(this) });
+                videoPanel.find("#Download").click(function () { download(this) });
+                videoPanel.find("#videoshow").click(function () { play(this) });
+
+                $("#dataResult").append(videoPanel);
+            });
+        }
+
+        function addVideo() {
+            $("#UploadModal").modal('show');
+        }
+
+        function vote(obj) {
+            var id = $(obj).parents(".thumbnail").find("#FileId").val();
+            $.post("Vote", { id: id }, function (data) {
+                if (data.Status) {                    
+                    $(obj).parents(".thumbnail").find("#VoteCount").eq(0).html(data.VoteCount + "票");
+                } else {
+                    alert(data.ErrMsg);
+                }
+            })
+        }
+        function download(obj) {
+            var fileName = $(obj).parents(".thumbnail").find("#VideoFileName").val();
+            var download = "http://yrtech.oss-cn-beijing.aliyuncs.com/DSATReport/FiveStar/" + fileName;
+            window.location.href = download;
+        }
+    </script>
+}
+
+<div id="UploadModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">上传五星经销商视频</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                <div id="upload-container" class="container-fluid" style="margin:0;padding:0">
+                    <div id="ossfile"></div>
+                    <div id="console"></div>
+                </div>
+                <div class="container-fluid pull-right">
+                    <a id="selectfiles" href="javascript:void(0);" class='btn btn-default btn-sm'>选择文件</a>
+                    <a id="postfiles" href="javascript:void(0);" class='btn btn-primary btn-sm'>开始上传</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="PlayModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">播放五星经销商视频</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                <video src="" style="width: 560px; background-color: black" codecs="avc1.42E01E, mp4a.40.2" controls autoplay="autoplay" preload="Auto"></video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <ul class="list-group">
+                <li class="list-group-item"><h4>五星级经销商视频</h4><h4 class="english">Five Star Dealer Video</h4></a></li>
+                <li class="list-group-item"><a href="Index">五星级经销商视频<br /><span class="english">Five Star Dealer Video List</span></a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-10 col-sm-10 col-md-10">
+            <form id="searchForm" style="display:none;">
+                <div id="inputBox" style="display:none;"></div>
+                <input type="hidden" name="type" value="">
+                <table class="table table-bordered">
+                    <tr id="searchArea" style="display:none;">
+                        <th width="85" align="center" class="switch">
+                            Region<a href="javascript:;" id="toGroup" style="display: none;"></a>
+                        </th>
+                        <td>
+                            <ul class="list-inline">
+                                @foreach (var item in ((UserInfoDto)Session["LoginUser"]).SmallAreaList)
+                                {
+                                    <li bchk="2" class="">@item.AreaName<input type="radio" name="sArea" value="@item.AreaCode"></li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr id="searchDealerGroup" style="display:none;">
+                        <th width="85" align="center" class="switch">
+                            Dealer Group<a href="javascript:;" id="toArea" style="display: none;"></a>
+                        </th>
+                        <td>
+                            <ul class="list-inline">
+                                @foreach (var item in ((UserInfoDto)Session["LoginUser"]).GroupList)
+                                {
+                                    <li bchk="2" class="">@item.GroupName<input type="checkbox" name="sDealerGroup[]" value="@item.GroupCode"></li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th align="center">Dealer</th>
+                        <td id="searchDealer">
+                            <ul class="list-inline"></ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th align="center">Wave</th>
+                        <td id="searchDate">
+                            <ul class="list-inline">
+                                @for (int i = curYear; i > curYear - 8; i--)
+                                {
+                                    if (i == curYear)
+                                    {
+                                        <li bchk="1" class="active">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i" checked="checked"></li>
+                                    }
+                                    else
+                                    {
+                                        <li bchk="2" class="">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i"></li>
+                                    }
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <button type="button" class="btn btn-default" id="clear">清&nbsp;空</button>
+                            <button type="button" class="btn btn-primary" id="btnSearch">查&nbsp;询</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="opens">开启搜索</div>
+            <div class="sechform"><div class="collapse1 text-center"><div class="i"><font></font></div></div></div>
+
+            <div class="container-fluid">
+                <form class="form-inline row" style="width:100%">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="filename" id="filename" placeholder="关键字" value="">
+                    </div>
+                    <button type="button" id="btnCustomerSearch" class="btn btn-default">搜 索</button>
+                </form>
+            </div>
+            <hr />
+            <div id="dataResult" class="row">
+
+            </div>
+            <div id="pagination" class="pull-right">
+                <ul id="pageUl"></ul>
+            </div>
+
+            <div id="videoPanelTemplate" class="col-md-3 hidden">
+                <div class="thumbnail ">
+                    <input id="FileId" type="hidden" />
+                    <input id="VideoFileName" type="hidden" />
+                    <a id="videoshow">
+                        <div class="v-img">
+                            <img class="img-responsive" src="../../content/images/v-img.png" />
+                        </div>
+                        <h5 class="title"></h5>
+                    </a>
+                    <div class="caption text-center">
+                        <span id="VoteCount" class="text-info"></span>
+                        &nbsp;&nbsp;
+                        <a id="Vote" href="javascript:void(0)" class="btn btn-default btn-sm" role="button">
+                            <i class="glyphicon glyphicon-thumbs-up text-info"></i> 投票
+                        </a>
+                        <a id="Download" href="javascript:void(0);" class="btn btn-default btn-sm" role="button">
+                            <i class="glyphicon glyphicon-download text-info"></i> 下载
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

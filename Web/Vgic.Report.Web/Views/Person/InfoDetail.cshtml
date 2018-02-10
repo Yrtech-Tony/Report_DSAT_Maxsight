@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "经销商人员信息详情";
+    Layout = "~/Views/Shared/_PersonLayout.cshtml";
+}
+
+<div class="col-xs-10 col-sm-10 col-md-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">经销商人员信息详情</div>
+        <div class="panel-body">
+
+            <dl class="dl-horizontal xx">
+                <dt>经销商名称</dt>
+                <dd>@ViewBag.StaffInfo.ShopName</dd>
+                <dt>经销商代码</dt>
+                <dd>@ViewBag.StaffInfo.ShopCode</dd>
+                <dt>经销商类型</dt>
+                <dd>@ViewBag.StaffInfo.ShopType</dd>
+                <dt>区域</dt>
+                <dd>@ViewBag.StaffInfo.AreaName</dd>
+            </dl>
+            <hr>
+
+            <dl class="dl-horizontal xx">
+                <dt>ID</dt>
+                <dd>@ViewBag.StaffInfo.Id</dd>
+                <dt>姓名</dt>
+                <dd>@ViewBag.StaffInfo.StaffName</dd>
+                <dt>性别</dt>
+                <dd>@ViewBag.StaffInfo.Sex</dd>
+                <dt>年龄</dt>
+                <dd>@ViewBag.StaffInfo.Age</dd>
+                <dt>身份证号</dt>
+                <dd>@ViewBag.StaffInfo.IdCardNO</dd>
+                <dt>电子邮箱</dt>
+                <dd>@ViewBag.StaffInfo.Email</dd>
+                <dt>部门</dt>
+                <dd>@ViewBag.StaffInfo.DepartmentName</dd>
+                <dt>岗位</dt>
+                <dd>@ViewBag.StaffInfo.PositionName</dd>
+                <dt>手机</dt>
+                <dd>@ViewBag.StaffInfo.TelNumber</dd>
+                <dt>入职时间</dt>
+                <dd>@ViewBag.StaffInfo.EntryDate</dd>
+                <dt>上岗时间</dt>
+                <dd>@ViewBag.StaffInfo.StartDate</dd>
+                <dt>新员工来源</dt>
+                <dd>@ViewBag.StaffInfo.SourceName</dd>
+                <dt>是否在职</dt>
+                <dd>@(ViewBag.StaffInfo.OnJobChk ? "是" : "否")</dd>
+                <dt>离职时间</dt>
+                <dd>@ViewBag.StaffInfo.EndDate</dd>
+                <dt>离职原因</dt>
+                <dd>@ViewBag.StaffInfo.ReasonName</dd>
+                <dt>离职去向</dt>
+                <dd>@ViewBag.StaffInfo.FateName</dd>
+                <dt>销售表现</dt>
+                <dd>@ViewBag.StaffInfo.SalesPerformanceName</dd>
+                <dt>AC成绩</dt>
+                <dd>@ViewBag.StaffInfo.ACStatusName</dd>
+                <dt>备注</dt>
+                <dd>@ViewBag.StaffInfo.Remark</dd>
+                <dt>数据时间</dt>
+                <dd>@(ViewBag.StaffInfo.Year + "-" + ViewBag.StaffInfo.Month)</dd>
+            </dl>
+        </div>
+    </div>
+
+</div>

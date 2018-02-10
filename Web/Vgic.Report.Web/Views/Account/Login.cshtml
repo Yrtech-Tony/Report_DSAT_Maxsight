@@ -1,0 +1,123 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>大众进口汽车销售质量平台</title>
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="~/Content/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--  -->
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" />
+</head>
+<body class="login">
+    <div class="container">
+        <div class="content">
+            <i class="i"><img src="~/Content/images/login-logo.png"></i>
+            <form id="searchForm" method="post" class="form-group login-form" action="#">
+                <input type="hidden" name="action" value="login" />
+                <div class="alert alert-danger alert-dismissible hidden" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span>输入用户名和密码.</span>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="txtUsername">用户名</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon-user"></i></span>
+                        <input type="text" class="form-control" id="txtUsername" placeholder="用户名" name="username" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="txtPassword">密码</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon-lock"></i></span>
+                        <input type="password" class="form-control" id="txtPassword" placeholder="密码" name="password" />
+                    </div>
+                </div>
+                <p class="text-right"><a id="btnForget" href="javascript:;">忘记密码</a></p>
+                <div class="text-right">
+                    <button id="btnLogin" type="button" class="btn btn-info"> 登陆  <i class="icon-circle-arrow-right icon-white"></i></button>
+                </div>
+                <input type="hidden" id="valueReturnUrl" value="@ViewBag.ReturnUrl" />
+            </form>
+        </div>
+    </div>
+
+    <div id="bottom" class="bg-danger">
+        <div class="container">
+            <p class="text-center">
+                建议使用Chrome，火狐或IE10以上版本，若使用360浏览器请在极速模式下打开系统<br />
+                如系统出现错误或异常，影响正常使用，请记录错误并通过以下方式通知管理员，以便及时为您解决问题！ <br />
+                工作时间：工作日9:00-18:00  /   电话：010-64687240-7303  /   邮箱：vgic_support@163.com
+            </p>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/comm")
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            document.onkeydown = function (e) {
+                if ((e || event).keyCode == 13)
+                    $("#btnLogin").trigger("click");
+            };
+
+            $("#txtUsername").popover({ content: "用户名不能为空", placement: "bottom", trigger: "manual" });
+            $("#txtPassword").popover({ content: "密码不能为空", placement: "bottom", trigger: "manual" });
+
+            $("#btnLogin").click(function () {
+                if ($("#txtUsername").val().trim() == '') {
+                    $("#txtUsername").popover("show");
+                    setTimeout(function () { $("#txtUsername").popover("hide"); }, 1000);
+                    return;
+                }
+                if ($("#txtPassword").val() == '') {
+                    $("#txtPassword").popover("show");
+                    setTimeout(function () { $("#txtPassword").popover("hide"); }, 1000);
+                    return;
+                }
+
+                $("#btnLogin").button('loading');
+                $.ajax("/Account/Login", {
+                    method:"POST",
+                    data: { sUserName: $("#txtUsername").val(), sPassword: $("#txtPassword").val(), ReturnUrl: $("#valueReturnUrl").val() },
+                    type: 'json',
+                    success: function (data) {
+                        if (data.Status) {
+                            location.href = data.sRedirectURL;
+                        }
+                        else {
+                            $("#btnLogin").button('reset');
+                            alert(data.sErrMsg);
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $("#btnLogin").button('reset');
+                        alert("未知错误，请通过以下方式联系管理员进行处理：\r\n电话：010-64687240-7303\r\n邮箱：vgic_support@163.com\r\n\r\n");
+                    }
+                });
+            });
+            $('#btnForget').click(function () {
+                alert('如您忘记密码，请通过以下方式联系管理员进行重置：\r\n电话：010-64687240-7303\r\n邮箱：vgic_support@163.com\r\n\r\n');
+            });
+        });
+    </script>
+</body>
+</html>

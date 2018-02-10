@@ -1,0 +1,44 @@
+﻿#hotNews {
+    position: relative;
+    border: 1px solid #ccc;
+    width: 360px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+    #hotNews ul {
+        font-size: 14px;
+        height: 30px;
+        overflow: hidden;
+    }
+
+    #hotNews ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin-left: 2px;
+    }
+
+        #hotNews ul li {
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            float: left;
+            display: inline;
+        }
+
+            #hotNews ul li a {
+                padding-left: 5px !important;
+                text-decoration: solid !important;
+                color: #337ab7 !important;
+                cursor: pointer;
+            }
+
+            #hotNews .close {
+                color: rgba(255,00,00,1) !important;
+                padding-right:2px  !important;
+                position: absolute;
+                right: 0px;
+                top: 3px;
+                cursor: pointer;
+            }

@@ -1,0 +1,353 @@
+﻿
+@{
+    ViewBag.Title = "经销商人员信息编辑";
+    Layout = "~/Views/Shared/_PersonLayout.cshtml";
+}
+
+@section scripts{
+    <script src="~/Content/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            if ($.support.msie) { $('input:checkbox').click(function () { this.blur(); this.focus(); }); }
+
+            $("input:radio[name='serving']").change(function () {
+                var onJobChk = $("[name='serving']:checked").val();
+                if (onJobChk == 'false') {
+                    $('#divTurnovertime').show();
+                    $('#divTurnover').show();
+                    $('#divTurnoverwhere').show();
+                }
+                else {
+                    $('#divTurnovertime').hide();
+                    $('#divTurnover').hide();
+                    $('#divTurnoverwhere').hide();
+                    $('#txtTurnoverTime').val("");
+                    $('#turnover').val("");
+                    $('#turnoverwhere').val("");
+                }
+            });
+
+            $("#department").change(function () {
+                $.ajax("/Person/SearchPositionByDepartmentId", {
+                    method: 'GET',
+                    type: 'Json',
+                    async: false,
+                    data: { departmentId: $("#department").val() },
+                    success: function (data) {
+                        $("#post").empty();
+                        $("#post").append("<option value=''>--请选择--</option>");
+                        $(data).each(function (index, item) {
+                            var option = "<option value='" + item.Code + "'>" + item.Name + "</option>";
+                            $("#post").append(option);
+                        });
+                    }
+                });
+            });
+
+            $("#btnSave").click(function () {
+
+                var id = $("[name='id']").val();
+                var staffName = $("[name='namef']").val();
+                var sex = $("[name='sex']:checked").val();
+                var email = $("[name='email']").val();
+                var departmentId = $("[name='department']").val();
+                var positionId = $("[name='post']").val();
+                var telNumber = $("[name='phone']").val();
+                //entryDate = $("[name='entrytime']").val();
+                var startDate = $("[name='startingdate']").val();
+                var sourceId = $("[name='sources']").val();
+                var onJobChk = $("[name='serving']:checked").val();
+                var endDate = $("[name='turnovertime']").val();
+                var reasonId = $("[name='turnover']").val();
+                var fateId = $("[name='turnoverwhere']").val();
+                var remark = $("[name='remark']").val();
+                var salesPerformanceId = $("[name='sales']").val()
+
+                var flag = true;
+                $(".error-msg").hide();
+
+                if (isEmpty(staffName)) {
+                    $("#txtNamef").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (isEmpty(email)) {
+                    $("#txtEmail").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (isEmpty(departmentId)) {
+                    $("#department").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (isEmpty(positionId)) {
+                    $("#post").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (isEmpty(telNumber)) {
+                    $("#txtPhone").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (isEmpty(startDate)) {
+                    $("#txtStartingdate").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (isEmpty(sourceId)) {
+                    $("#sources").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+
+                if (!isName(staffName)) {
+                    $("#txtNamef").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (!isEmail(email)) {
+                    $("#txtEmail").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                if (!isTelNumber(telNumber)) {
+                    $("#txtPhone").parents(".form-group").find(".error-msg").show();
+                    flag = flag && false;
+                }
+                
+
+                if (onJobChk == "false") {
+                    if (isEmpty(endDate)) {
+                        $("#txtTurnoverTime").parents(".form-group").find(".error-msg").show();
+                        flag = flag && false;
+                    }
+                    if (isEmpty(reasonId)) {
+                        $("#turnover").parents(".form-group").find(".error-msg").show();
+                        flag = flag && false;
+                    }
+                    if (isEmpty(fateId)) {
+                        $("#turnoverwhere").parents(".form-group").find(".error-msg").show();
+                        flag = flag && false;
+                    }
+                    if (salesPerformanceId == "" && (positionId == "8" || positionId == "9" || positionId == "10" || positionId == "31" || positionId == "32")) {
+                        $("#sales").parents(".form-group").find(".error-msg").show();
+                        flag = flag && false;
+                    }
+                    if (endDate < startDate) {
+                        $("#txtTurnoverTime").parents(".form-group").find(".error-msg").html("离职时间不能早于上岗时间");
+                        $("#txtTurnoverTime").parents(".form-group").find(".error-msg").show();
+                        flag = flag && false;
+                    }
+                    if (!flag) return;
+
+                    
+                   
+                } else {
+                    if (!flag) return;
+                }
+                $("#btnSave").button('loading');
+                $.ajax("/Person/Update", {
+                    method: "POST",
+                    type: "json",
+                    data: {
+                        id: $("[name='id']").val(),
+                        staffName: $("[name='namef']").val(),
+                        sex: $("[name='sex']:checked").val(),
+                        email: email,
+                        positionId: $("[name='post']").val(),
+                        telNumber: telNumber,
+                        //entryDate: $("[name='entrytime']").val(),
+                        startDate: $("[name='startingdate']").val(),
+                        sourceId: $("[name='sources']").val(),
+                        onJobChk: $("[name='serving']:checked").val(),
+                        endDate: $("[name='turnovertime']").val(),
+                        reasonId: $("[name='turnover']").val(),
+                        fateId: $("[name='turnoverwhere']").val(),
+                        remark: $("[name='remark']").val(),
+                        salesPerformanceId: $("[name='sales']").val()
+                    },
+                    success: function (data) {
+                        location.href = "/Person/InfoSearch";
+                        $("#btnSave").button('reset');
+                    }
+                });
+            });
+
+            var onJobChk = "@ViewBag.StaffInfo.OnJobChk";
+            if(onJobChk == "False"){
+                $('#divTurnovertime').show();
+                $('#divTurnover').show();
+                $('#divTurnoverwhere').show();
+            }
+        });
+
+        function isEmpty(value) {
+            if (value == "")
+                return true;
+            else
+                return false;
+        }
+        function isEmail(email) {
+            var filter = /^([a-zA-Z0-9_\.\-])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (filter.test(email))
+                return true;
+            else {
+                return false;
+            }
+        }
+        function isTelNumber(telNumber) {
+            var re = /^1\d{10}$/;
+            if (re.test(telNumber)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function isName(name) {
+            if (/^[a-zA-z\u4E00-\u9FA5]*$/.test(name)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}
+
+<div class="col-xs-10 col-sm-10 col-md-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">经销商人员信息修改</div>
+        <div class="panel-body">
+            <form id="searchForm" method="post" action="#" class="form-horizontal">
+                <input type="hidden" name="id" value="@ViewBag.StaffInfo.Id" />
+                <div class="form-group">
+                    <label for="txtNamef" class="col-xs-2 control-label">姓名*</label>
+                    <div class="col-xs-4">
+                        <input type="text" name="namef" id="txtNamef" class="form-control" placeholder="姓名" value="@ViewBag.StaffInfo.StaffName" />
+                    </div>
+                    <span class="error-msg">不可为空或格式不正确</span>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">性别*</label>
+                    <div class="col-xs-4">
+                        @if (ViewBag.StaffInfo.Sex == "女")
+                        {
+                            <label class="radio-inline"><input type="radio" name="sex" value="男"> 男</label>
+                            <label class="radio-inline"><input type="radio" name="sex" value="女" checked> 女</label>
+                        }
+                        else
+                        {
+                            <label class="radio-inline"><input type="radio" name="sex" value="男" checked> 男</label>
+                            <label class="radio-inline"><input type="radio" name="sex" value="女"> 女</label>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail" class="col-xs-2 control-label">邮箱*</label>
+                    <div class="col-xs-4">
+                        <input type="text" name="email" id="txtEmail" class="form-control" placeholder="邮箱" value="@ViewBag.StaffInfo.Email" />
+                    </div>
+                    <span class="error-msg">不可为空或格式不正确</span>
+                </div>
+                <div class="form-group">
+                    <label for="txtPost" class="col-xs-2 control-label">部门*</label>
+                    <div class="col-xs-4">
+                        @Html.DropDownList("department", (IEnumerable<SelectListItem>)ViewBag.DepartmentList, "--请选择--", new { @class = "form-control" })
+                    </div>
+                    <span class="error-msg">不可为空，请选择</span>
+                </div>
+                <div class="form-group">
+                    <label for="txtPost" class="col-xs-2 control-label">岗位*</label>
+                    <div class="col-xs-4">
+                        @Html.DropDownList("post", (IEnumerable<SelectListItem>)ViewBag.PositionList, "--请选择--", new { @class = "form-control" })
+                    </div>
+                    <div class="col-xs-6">
+                        <p>
+                            1. 如兼职其他岗位，请在备注中注明兼职岗位; <br>
+                            2. 如实际岗位不在下拉菜单中，请选“销售其他“，并在备注中说明。
+                        </p>
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-6" style="margin-top:0px;">
+                        <span class="error-msg">不可为空，请选择</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtPhone" class="col-xs-2 control-label">手机*</label>
+                    <div class="col-xs-4">
+                        <input type="text" name="phone" id="txtPhone" class="form-control" placeholder="手机" value="@ViewBag.StaffInfo.TelNumber" />
+                    </div>
+                    <span class="error-msg">不可为空或格式不正确</span>
+                </div>
+                @*<div class="form-group">
+                        <label for="txtEntryTime" class="col-xs-2 control-label">入职时间</label>
+                        <div class="col-xs-4">
+                            <input type="text" name="entrytime" id="txtEntryTime" class="form-control" onClick="WdatePicker()" placeholder="入职时间" value="@ViewBag.StaffInfo.EntryDate.ToString("yyyy-MM-dd")" />
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <label for="txtStartingdate" class="col-xs-2 control-label">上岗时间*</label>
+                    <div class="col-xs-4">
+                        <input type="text" name="startingdate" id="txtStartingdate" class="form-control" onclick="WdatePicker()" placeholder="上岗时间" value="@ViewBag.StaffInfo.StartDate.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <span class="error-msg">不可为空</span>
+                </div>
+                <div class="form-group">
+                    <label for="txtSources" class="col-xs-2 control-label">新员工来源*</label>
+                    <div class="col-xs-4">
+                        @Html.DropDownList("sources", (IEnumerable<SelectListItem>)ViewBag.SourceOfEmployeeList, "--请选择--", new { @class = "form-control" })
+                    </div>
+                    <span class="error-msg">不可为空，请选择</span>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">是否在职</label>
+                    <div class="col-xs-4">
+                        @if (ViewBag.StaffInfo.OnJobChk)
+                        {
+                            <label class="radio-inline"><input type="radio" name="serving" value="true" checked> 是</label>
+                            <label class="radio-inline"><input type="radio" name="serving" value="false"> 否</label>
+                        }
+                        else
+                        {
+                            <label class="radio-inline"><input type="radio" name="serving" value="true"> 是</label>
+                            <label class="radio-inline"><input type="radio" name="serving" value="false" checked> 否</label>
+                        }
+                    </div>
+                    <div class="col-xs-6"><p class="pt8">只要离开本店均属于离职，一旦离职，则不可修改，请谨慎填写</p></div>
+                </div>
+                <div class="form-group" id="divTurnovertime" hidden>
+                    <label for="txtTurnoverTime" class="col-xs-2 control-label">离职时间*</label>
+                    <div class="col-xs-4">
+                        <input type="text" name="turnovertime" id="txtTurnoverTime" class="form-control" onclick="WdatePicker()" placeholder="离职时间" value="@(((DateTime?)ViewBag.StaffInfo.EndDate).HasValue?ViewBag.StaffInfo.EndDate.ToString("yyyy-MM-dd"):"")" />
+                    </div>
+                    <span class="error-msg">不可为空</span>
+                </div>
+                <div class="form-group" id="divTurnover" hidden>
+                    <label for="txtTurnover" class="col-xs-2 control-label">离职原因*</label>
+                    <div class="col-xs-4">
+                        @Html.DropDownList("turnover", (IEnumerable<SelectListItem>)ViewBag.LeaveReasonList, "--请选择--", new { @class = "form-control" })
+                    </div>
+                    <span class="error-msg">不可为空，请选择</span>
+                </div>
+                <div class="form-group" id="divTurnoverwhere" hidden>
+                    <label for="txtTurnoverwhere" class="col-xs-2 control-label">离职去向*</label>
+                    <div class="col-xs-4">
+                        @Html.DropDownList("turnoverwhere", (IEnumerable<SelectListItem>)ViewBag.LeaveFateList, "--请选择--", new { @class = "form-control" })
+                    </div>
+                    <span class="error-msg">不可为空，请选择</span>
+                </div>
+                <div class="form-group">
+                    <label for="txtRemark" class="col-xs-2 control-label">备注</label>
+                    <div class="col-xs-4">
+                        <input type="text" name="remark" id="txtRemark" class="form-control" placeholder="备注" value="@ViewBag.StaffInfo.Remark" />
+                    </div>
+                    <div class="col-xs-4"><p class="pt8">可填写曾用名/兼职岗位/实际岗位等信息</p></div>
+                </div>
+                <div class="form-group">
+                    <label for="txtSales" class="col-xs-2 control-label">销售表现</label>
+                    <div class="col-xs-4">
+                        @Html.DropDownList("sales", (IEnumerable<SelectListItem>)ViewBag.SalesPerformanceList, "--请选择--", new { @class = "form-control" })
+                    </div>
+                    <span class="error-msg">不可为空，请选择</span>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnSave" class="btn btn-primary"> 提 交 </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

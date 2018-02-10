@@ -1,0 +1,9 @@
+System.Data.OleDb.OleDbException: 无法打开登录所请求的数据库 "DSATReport"。登录失败。
+   在 System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   在 System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OleDb.OleDbConnection.Open()
+   在 CommonHandler.query(String sql) 位置 d:\D盘\workspace\项目整理\进行中的项目\Source\PC程序\大众报告平台\XHXWebSite\App_Code\CommonHandler.cs:行号 98 
+EXEC  up_Login 'admin' 

@@ -1,0 +1,323 @@
+﻿@{
+    ViewBag.Title = "经销商人员报告";
+    Layout = "~/Views/Shared/_PersonLayout.cshtml";
+    var curYear = DateTime.Now.Year;
+    var curMonth = DateTime.Now.Month;
+}
+@section scripts{
+    <script src="~/Scripts/jquery.twbsPagination.js"></script>
+    <script type="text/javascript" language="javascript">
+        var download_file = { iframe: undefined };
+        var roleType = "@ViewBag.RoleType";
+        var userId = "@ViewBag.UserId";
+        var countPerPage = @ViewBag.CountPerPage;
+        var pageCount = 1;
+        var scoreList = [];
+        $(function() {
+            $('.i,.opens').click(function(){
+                $('.i').children("font").toggleClass("other");
+                $('#searchForm').slideToggle();
+                $('#searchForm').toggleClass('none');
+                $('.opens').slideToggle();
+                $('.opens').toggleClass('none');
+            });
+
+            $("#btnSearch").click(function () {
+                SearchStaffInfo();
+            });
+            $("#btnCustomerSearch").click(function () {
+                SearchStaffInfo();
+            });
+            $("#btnDownloadReport").click(function(){
+                //alert("正在下载...");
+                var shopCode = "";
+                $("input[name='nDealerID[]'][checked='checked']").each(function(){
+                    shopCode+=($(this).val()+";");
+                });
+                if (typeof (download_file.iframe) == "undefined") {
+                    var iframe = document.createElement("iframe");
+                    download_file.iframe = iframe;
+                    document.body.appendChild(download_file.iframe);
+                }
+                var requestUrl = "DownloadReport?areaCode={0}&groupCode={1}&shopCode={2}&staffName={3}&year={4}&month={5}"
+                download_file.iframe.src = stringFormat(requestUrl,
+                    $("input[name='sArea'][checked='checked']").val(),
+                    $("input[name='sDealerGroup[]'][checked='checked']").val(),
+                    shopCode,
+                    $("#txtStaffName").val(),
+                    $("input[name='nYear'][checked='checked']").val(),
+                    $("input[name='nDateSort'][checked='checked']").val()
+                );
+                download_file.iframe.style.display = "none";
+                //closealert();
+            });
+
+            if(roleType == "S"|| roleType=="SL"){
+                $("#searchArea").show();
+            }else if(roleType=="02"||roleType=="01"){
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchArea').find('ul').find('li');
+                $(li).click();
+                $('#searchArea').find('th').find('a').remove();
+            }else if(roleType == "G") {
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var li = $('#searchDealerGroup').find('ul').find('li');
+                $(li).click();
+                $('#searchDealerGroup').find('th').find('a').remove();
+            }
+            else{
+                $("#searchArea").hide();
+                $("#searchDealerGroup").hide();
+                var dealerUl = $('#searchDealer').show().find('ul');
+                var li = $("<li bChk='2' onclick='dealerLiClk(this)'></li>").html("@ViewBag.ShopNameForCurrentUser").append($("<input type='checkbox' name='nDealerID[]' value='" + @ViewBag.ShopCodeForCurrentUser + "'>"));
+                dealerUl.append(li);
+                $(li).click();
+            }
+
+            $("#btnSearch").click();
+        });
+
+        function SearchStaffInfo(pageNo){
+            var shopCode = "";
+            $("input[name='nDealerID[]'][checked='checked']").each(function(){
+                shopCode+=($(this).val()+";");
+            });
+            pageNo=pageNo?pageNo:1;
+            $.ajax("StaffInfoSearch", {
+                method: "GET",
+                data: {
+                    areaCode: $("input[name='sArea'][checked='checked']").val(),
+                    groupCode: $("input[name='sDealerGroup[]'][checked='checked']").val(),
+                    shopCode: shopCode,
+                    staffName: $("#txtStaffName").val(),
+                    year: $("input[name='nYear'][checked='checked']").val(),
+                    month: $("input[name='nDateSort'][checked='checked']").val(),
+                    pageNum:  pageNo,
+                    countPerPage: countPerPage
+                },
+                type: 'json',
+                success: function (data) {
+                    SearchStaffInfoSuccess(data);
+                    pageCount = Math.ceil(data.totalCount / countPerPage);
+                    initPages(pageNo, pageCount,SearchStaffInfo);
+                }
+            });
+        }
+
+        function SearchStaffInfoSuccess(data){
+            $("#stafflist").scrollLeft(0);
+            var tableStafflist = $("#stafflist>table");
+            var tableHeader = "<tr><th class='piao'>操作</th><th><div class='pzhan'>&nbsp;</div></th><th>姓名</th><th>性别</th><th>身份证号</th><th>电子邮箱</th><th>部门</th><th>岗位</th><th>手机</th><th>入职时间</th><th>上岗时间</th><th>新员工来源</th><th>是否在职</th><th>离职时间</th><th>离职原因</th><th>离职去向</th><th>备注</th><th>销售表现</th><th>AC成绩</th><th>更新时间</th></tr>";
+
+            $(tableStafflist).empty();
+            $(tableStafflist).append(tableHeader);
+            $.each(data.staffInfoList, function (index, item) {
+                var oprations = "";
+                if (data.isCurrentYearMonth) {
+                    if(roleType == "S"|| userId=="HR"){
+                        oprations = "<a href='/Person/InfoDetail?id={0}'>查看</a> | <a href='/Person/InfoEdit?id={0}'>编辑</a> | <a href='javascript:;' onclick='delStaff({0})'>删除</a>";
+                    }else if(roleType == "Shop"|| userId=="IT-Dealer"){
+                        if(item.OnJobChk){
+                            oprations = "<a href='/Person/InfoDetail?id={0}'>查看</a> | <a href='/Person/InfoEdit?id={0}'>编辑</a>";
+                        }
+                        else {
+                            oprations = "<a href='/Person/InfoDetail?id={0}'>查看</a>";
+                        }
+
+                    }
+                    else{
+                        oprations = "<a href='/Person/InfoDetail?id={0}'>查看</a>";
+                    }
+                }else{
+                    oprations = "<a href='/Person/InfoDetail?id={0}'>查看</a>";
+                }
+
+                var tr = $("<tr class='active'></tr>");
+                var col1 = $("<td class='piao'></td>").html(stringFormat(oprations,item.Id));
+                var col2 = $("<td></td>").html("<div class='pzhan'>&nbsp;</div>");
+                var col3 = $("<td></td>").html(item.StaffName);
+                var col4 = $("<td class='text-center'></td>").html(item.Sex);
+                var col5 = $("<td></td>").html(item.IdCardNO);
+                var col6 = $("<td></td>").html(item.Email);
+                var col20 = $("<td></td>").html(item.DepartmentName);
+                var col7 = $("<td></td>").html(item.PositionName);
+                var col8 = $("<td></td>").html(item.TelNumber);
+                var col9 = $("<td></td>").html(ChangeDateFormat(item.EntryDate));
+                var col10 = $("<td></td>").html(ChangeDateFormat(item.StartDate));
+                var col11 = $("<td></td>").html(item.SourceName);
+                var col12 = $("<td class='text-center'></td>").html(item.OnJobChk?"是":"否");
+                var col13 = $("<td></td>").html(ChangeDateFormat(item.EndDate));
+                var col14 = $("<td></td>").html(item.ReasonName);
+                var col15 = $("<td class='text-center'></td>").html(item.FateName);
+                var col16 = $("<td class='text-center'></td>").html(item.Remark);
+                var col17 = $("<td></td>").html(item.SalesPerformanceName);
+                var col18 = $("<td></td>").html(item.ACStatusName);
+                var col19 = $("<td></td>").html(ChangeDateFormat(item.ModifiDateTime));
+                tr.append(col1).append(col2).append(col3).append(col4).append(col5).append(col6).append(col20).append(col7).append(col8).append(col9)
+                  .append(col10).append(col11).append(col12).append(col13).append(col14).append(col15).append(col16).append(col17).append(col18).append(col19);
+                $(tableStafflist).append(tr);
+            });
+            var tdPiaos = tableStafflist.find("td.piao");
+            if(tdPiaos.length>0){
+                var piaoWd = 0;
+                $.each(tdPiaos,function(){
+                    piaoWd = piaoWd>$(this).width()?piaoWd:$(this).width();
+                });
+                tableStafflist.find(".piao").width(piaoWd-1);
+                tableStafflist.find(".pzhan").width(piaoWd-1);
+            }
+        }
+
+        function delStaff(id){
+            var delSure = confirm("确定要删除该人员信息？");
+            if(delSure){
+                $.ajax("/Person/Delete",{
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    type: 'json',
+                    success: function (data) {
+                        alert("删除成功！");
+                        SearchStaffInfo();
+                    }
+                });
+            }
+        }
+    </script>
+}
+
+<div id="container" class="col-md-10">
+    <form id="searchForm" style="display:none;">
+        <input type="hidden" id="pageNum" name="pageNum" value="1">
+        <input type="hidden" name="type" value="">
+        <table class="table table-bordered">
+            <tr id="searchArea" style="display:none;">
+                <th width="85" align="center" class="switch">
+                    Region<a href="javascript:;" id="toGroup" style="display: none;"></a>
+                </th>
+                <td>
+                    <ul class="list-inline">
+                        @foreach (var item in ((UserInfoDto)Session["LoginUser"]).SmallAreaList)
+                        {
+
+                            <li bchk="2" class="">@item.AreaName<input type="radio" name="sArea" value="@item.AreaCode"></li>
+
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr id="searchDealerGroup" style="display:none;">
+                <th width="85" align="center" class="switch">
+                    Dealer Group<a href="javascript:;" id="toArea" style="display: none;"></a>
+                </th>
+                <td>
+                    <ul class="list-inline">
+                        @foreach (var item in ((UserInfoDto)Session["LoginUser"]).GroupList)
+                        {
+
+                            <li bchk="2" class="">@item.GroupName<input type="checkbox" name="sDealerGroup[]" value="@item.GroupCode"></li>
+
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th align="center">Dealer</th>
+                <td id="searchDealer">
+                    <ul class="list-inline">
+                        @*<li bchk="2" onclick="dealerLiClk(this)">商丘中豫汽车贸易有限公司<input type="checkbox" name="nDealerID[]" value="79601165"></li>*@
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th align="center">Wave</th>
+                <td id="searchDate">
+                    <ul class="list-inline">
+                        @for (int i = curYear; i > curYear - 8; i--)
+                        {
+                            if (i == curYear)
+                            {
+                                <li bchk="1" class="active">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i" checked="checked"></li>
+                            }
+                            else
+                            {
+                                <li bchk="2" class="">@Html.Raw(i) 年<input type="radio" name="nYear" value="@i"></li>
+                            }
+                        }
+                    </ul>
+                    <ul class="list-inline">
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            if (i == curMonth)
+                            {
+                                <li bchk="1" class="active">@Html.Raw(i)月<input type="radio" name="nDateSort" value="@i" checked="checked"></li>
+                            }
+                            else
+                            {
+                                <li bchk="2" class="">@Html.Raw(i)月<input type="radio" name="nDateSort" value="@i"></li>
+                            }
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <button type="button" class="btn btn-default" id="clear">清&nbsp;空</button>
+                    <button type="button" class="btn btn-primary" id="btnSearch">查&nbsp;询</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div class="opens">开启搜索</div>
+    <div class="sechform"><div class="collapse1 text-center"><div class="i"><font></font></div></div></div>
+
+    <form class="form-inline pull-left mb15">
+        <div class="form-group">
+            <input type="text" class="form-control" name="sStaffName" id="txtStaffName" placeholder="客户姓名" value="">
+        </div>
+        <button type="button" id="btnCustomerSearch" class="btn btn-default">搜 索</button>
+    </form>
+    <div class="pull-right">
+        @if (@ViewBag.RoleType == "Shop"
+            || (Session["LoginUser"] as UserInfoDto).UserId == "IT-Dealer")
+        {
+            <a href="/Person/InfoSave" class=" btn btn-primary ">添加人员</a>
+        }
+        <a href="javascript:;" id="btnDownloadReport" class="btn btn-primary">导出数据</a>
+    </div>
+    <div id="stafflist" class="table-responsive pb20 comm-table-div">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th class="piao">操作</th>
+                <th><div class="pzhan">&nbsp;</div></th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>身份证号</th>
+                <th>电子邮箱</th>
+                <th>部门</th>
+                <th>岗位</th>
+                <th>手机</th>
+                <th>入职时间</th>
+                <th>上岗时间</th>
+                <th>新员工来源</th>
+                <th>是否在职</th>
+                <th>离职时间</th>
+                <th>离职原因</th>
+                <th>离职去向</th>
+                <th>备注</th>
+                <th>销售表现</th>
+                <th>AC成绩</th>
+                <th>更新时间</th>
+
+            </tr>
+        </table>
+    </div>
+    <div id="pagination" class="pull-right">
+        <ul id="pageUl"></ul>
+    </div>
+
+</div>
+

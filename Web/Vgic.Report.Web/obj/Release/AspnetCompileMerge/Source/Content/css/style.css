@@ -1,0 +1,525 @@
+/* CSS Document */
+
+body {
+    font: 14px/24px '微软雅黑','Open Sans', Arial, sans-serif;
+}
+
+.pt8 {
+    padding-top: 8px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+#header {
+    height: 110px;
+    -moz-box-shadow: 0 0 10px #999;
+    -webkit-box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;
+    margin-bottom: 35px;
+}
+
+    #header .logo {
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+
+    #header .logo-txt {
+        font-size: 19px;
+        color: #6A98D1;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+        #header .logo-txt .en {
+            font-size: 16px;
+            font-weight: normal;
+            display: block;
+            margin-top: 5px;
+        }
+
+    #header .nav {
+        color: #6A98D1;
+        padding: 4px 15px;
+        margin-top: 50px;
+        margin-left: 60px;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+        #header .nav a:link {
+            color: #6A98D1;
+            text-decoration: none;
+        }
+
+        #header .nav:hover {
+            background: #6A98D1;
+        }
+
+            #header .nav:hover a {
+                color: #fff;
+            }
+
+    #header .login {
+        color: #909090;
+        margin-top: 60px;
+    }
+
+        #header .login span {
+            color: #6A98D1;
+            padding-right: 15px;
+        }
+
+        #header .login a {
+            color: #909090;
+            padding: 0 8px;
+        }
+
+            #header .login a:hover {
+                color: #6A98D1;
+            }
+
+.menu h4 {
+    color: #535353;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.menu a {
+    line-height: 1.5;
+}
+
+.menu .en {
+    display: block;
+    font-size: 12px;
+    color: #999;
+}
+
+.menu a.list-group-item {
+    color: #909090;
+    padding: 8px 3px;
+}
+
+.menu a.list-group-active, .menu a:hover.list-group-item, .menu a:hover.list-group-active, .menu a.list-group-active .en, .menu a:hover.list-group-item .en, .menu a:hover.list-group-active .en {
+    color: #6A98D1;
+}
+
+.menu list-group {
+    border: 0;
+}
+
+.menu .list-group-item {
+    border: 0;
+    border-top: 1px solid #999;
+    border-radius: 0;
+}
+
+#searchForm .table-bordered > tbody > tr > th {
+    text-align: center;
+    vertical-align: middle;
+    color: #353535;
+    border-color: #e9e9e9;
+}
+
+#searchForm .table-bordered > tbody > tr > td {
+    font-size: 12px;
+    vertical-align: middle;
+    padding-bottom: 0;
+    border-color: #e9e9e9;
+}
+
+    #searchForm .table-bordered > tbody > tr > td li {
+        background-color: #E9E9E9;
+        border-radius: 3px;
+        padding: 5px 19px;
+        margin-top: 3px;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+
+#searchForm #searchArea li {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#searchForm #searchDealer li {
+    width: 180px;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+
+#searchForm .table-bordered > tbody > tr > td li.active, #searchForm .table-bordered > tbody > tr > td li:hover {
+    background: #6A98D1;
+    color: #fff;
+}
+
+#searchForm .table-bordered > tbody > tr > td li input {
+    display: none;
+}
+
+#searchForm .btn {
+    padding: 5px 35px;
+    margin: 0 20px 10px 0;
+}
+
+#searchForm .none {
+    display: none;
+}
+
+#searchForm .form-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+    #searchForm .form-group p {
+        line-height: 15px;
+        font-size: 12px;
+        color: #999;
+    }
+
+    #searchForm .form-group .form-control {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-size: 12px;
+    }
+
+.opens {
+    text-align: center;
+    border: 1px solid #e9e9e9;
+    padding: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.sechform {
+    position: relative;
+}
+
+    .sechform .collapse1 {
+        width: 100%;
+        position: absolute;
+        top: -21px;
+        z-index: 99;
+        text-align: center;
+    }
+
+        .sechform .collapse1 .i {
+            width: 80px;
+            height: 30px;
+            line-height: 25px;
+            background: #fff;
+            border: 1px solid #e9e9e9;
+            border-top: 0;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+            .sechform .collapse1 .i font:after {
+                content: "﹀";
+            }
+
+            .sechform .collapse1 .i font.other:after {
+                content: "︿";
+            }
+
+.btn-primary {
+    background-color: #6A98D1;
+    border-color: #6A98D1;
+}
+
+#stafflist {
+    margin-top: 0px;
+}
+
+    #stafflist tr {
+        position: relative;
+    }
+
+    #stafflist .piao {
+        left: 16px;
+        width: 130px;
+        overflow: hidden;
+        background-color: #EAF0F9;
+        position: absolute;
+        z-index: 99;
+    }
+
+    #stafflist .pzhan {
+        width: 111px;
+    }
+
+    #stafflist .piao1 {
+        left: 16px;
+        width: 50px;
+        overflow: hidden;
+        background-color: #EAF0F9;
+        position: absolute;
+        z-index: 99;
+    }
+
+    #stafflist .pzhan1 {
+        width: 31px;
+    }
+
+@-moz-document url-prefix() { /* 火狐 */
+    #stafflist .piao {
+        left: 0;
+    }
+
+    #stafflist .piao1 {
+        left: 0;
+    }
+}
+
+#stafflist .piao a {
+    color: #676767;
+}
+
+    #stafflist .piao a:hover {
+        color: #6A98D1;
+    }
+
+#stafflist .table-bordered > tbody > tr > th {
+    text-align: center;
+    color: #fff;
+    background-color: #7eaee8; /*rgb(34, 116, 172)*/
+}
+
+#stafflist .table > tbody > tr > td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+}
+
+    .table-responsive > .table {
+        margin-bottom: 0;
+    }
+
+        .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tfoot > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > thead > tr > th {
+            white-space: nowrap;
+        }
+
+    .table-responsive > .table-bordered {
+        border: 0;
+    }
+
+        .table-responsive > .table-bordered > tbody > tr > td:first-child, .table-responsive > .table-bordered > tbody > tr > th:first-child, .table-responsive > .table-bordered > tfoot > tr > td:first-child, .table-responsive > .table-bordered > tfoot > tr > th:first-child, .table-responsive > .table-bordered > thead > tr > td:first-child, .table-responsive > .table-bordered > thead > tr > th:first-child {
+            border-left: 0;
+        }
+
+        .table-responsive > .table-bordered > tbody > tr > td:last-child, .table-responsive > .table-bordered > tbody > tr > th:last-child, .table-responsive > .table-bordered > tfoot > tr > td:last-child, .table-responsive > .table-bordered > tfoot > tr > th:last-child, .table-responsive > .table-bordered > thead > tr > td:last-child, .table-responsive > .table-bordered > thead > tr > th:last-child {
+            border-right: 0;
+        }
+
+        .table-responsive > .table-bordered > tbody > tr:last-child > td, .table-responsive > .table-bordered > tbody > tr:last-child > th, .table-responsive > .table-bordered > tfoot > tr:last-child > td, .table-responsive > .table-bordered > tfoot > tr:last-child > th {
+            border-bottom: 0;
+        }
+
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /* 3. */
+    .pb20 {
+        padding-bottom: 20px;
+    }
+    /* IE10+ */
+}
+
+.page .pagination {
+    margin-top: 0;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    background-color: #6A98D1;
+    border-color: #6A98D1;
+}
+
+#bottom {
+    font-size: 12px;
+    color: #666;
+    border-top: 1px #ccc solid;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+    #bottom.bg-danger {
+        background: rgba(0, 0, 0, 0.4) !important; /* IE无效，FF有效 */
+        background: #000;
+        filter: alpha(opacity=40);
+        color: #fff;
+    }
+
+body.login {
+    background: url(../images/loginbg.jpg);
+    /* 背景图垂直、水平均居中 */
+    background-position: center center;
+    /* 背景图不平铺 */
+    background-repeat: no-repeat;
+    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+    background-attachment: fixed;
+    /* 让背景图基于容器大小伸缩 */
+    background-size: cover;
+    /* 设置背景颜色，背景图加载过程中会显示背景色 */
+    background-color: #135994;
+}
+
+.login .content {
+    position: relative;
+    width: 470px;
+    background: rgba(255, 255, 255, 0.6) !important; /* IE无效，FF有效 */
+    background: #fff;
+    filter: alpha(opacity=60);
+    tborder: 1px #fff solid;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    margin: 150px auto 200px;
+    padding: 10px 20px 5px 190px;
+}
+
+    .login .content .i {
+        position: absolute;
+        top: 35px;
+        left: 30px;
+    }
+
+.login #searchForm .input-group-addon i::before {
+    width: 13px;
+    color: #CCC;
+    font-size: 16px;
+}
+
+.content #searchForm .btn {
+    width: 100%;
+    margin: auto 0;
+}
+
+.content #searchForm .fs12 a {
+    font-size: 12px;
+}
+
+.content #searchForm {
+    border-left: #666 solid 1px;
+    padding: 1px 10px 10px 30px;
+    margin: 30px auto;
+}
+
+.xx dt, .xx dd {
+    padding-top: 8px;
+    color: #666;
+}
+
+
+.pd .nav3 {
+    margin-top: 10px;
+    margin-left: 1px;
+}
+
+    .pd .nav3 li {
+        font-size: 12px;
+        border-left: 1px solid #000;
+        padding: 0 20px;
+    }
+
+        .pd .nav3 li a {
+            color: #333;
+        }
+
+        .pd .nav3 li.active {
+            background: #C8DEF6;
+        }
+
+.pd h3 {
+    color: #80B2E8;
+}
+
+.pd .poho {
+    margin-top: 20px;
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.pd .jzp {
+    position: absolute;
+    left: 550px;
+    bottom: 0;
+}
+
+    .pd .jzp img {
+    }
+
+.pd-li {
+    height: 220px;
+    background: rgba(246, 246, 246, 0.5) !important; /* IE无效，FF有效 */
+    background: #F6F6F6;
+    filter: alpha(opacity=50);
+    cursor: pointer;
+    border: 1px #c9c9c9 solid;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 2px 3px 2px #c9c9c9;
+    -webkit-box-shadow: 2px 3px 2px #c9c9c9;
+    box-shadow: 2px 3px 2px #c9c9c9;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .pd-li:hover {
+        background: rgba(246, 246, 246, 0.8) !important; /* IE无效，FF有效 */
+        background: #F6F6F6;
+        filter: alpha(opacity=80);
+        border-color: #ccc;
+    }
+
+    .pd-li a:link {
+        color: #535353;
+    }
+    .pd-li a {
+        color: #535353;
+    }
+
+    .pd-li h5 {
+        font-weight: 700;
+        text-align: center;
+        padding: 15px 10px;
+        margin-top: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+        .pd-li h5 a:link {
+            color: #337AB7;
+        }
+
+    .pd-li li {
+        list-style-type: square;
+        color: #337AB7;
+    }
+
+    .pd-li i {
+        color: #E6EBF0;
+        font-size: 130px;
+        position: absolute;
+        right: -6px;
+        top: 120px;
+        z-index: -1;
+    }

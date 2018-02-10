@@ -1,0 +1,63 @@
+﻿@using Vgic.Report.Web.DSATReportServer;
+@model ACScoreDto
+<div class="panel panel-default">
+    <div class="panel-heading">AC成绩编辑</div>
+    <div class="panel-body">
+        <form id="acSorceSaveForm" class="form-horizontal">
+            <div class="form-group">
+                <label for="txtNamef" class="col-xs-2 control-label">身份证</label>
+                <div class="col-xs-4">
+                    @Html.TextBox("IdCardNO",Model.IdCardNO, new { @class="form-control", @placeholder="身份证"})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtScore" class="col-xs-2 control-label">岗位</label>
+                <div class="col-xs-4">
+                    @Html.DropDownList("PositionCode", Vgic.Report.Web.Common.SelectListTool.Positions, new { @class = "form-control" })
+                    @Html.Hidden("PositionCode", Model.IdCardNO)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtEmail" class="col-xs-2 control-label">时间</label>
+                <div class="col-xs-2">
+                    @Html.DropDownList("Year", Vgic.Report.Web.Common.SelectListTool.Years, new { @class = "form-control" })
+                </div>
+                <div class="col-xs-2">
+                    @Html.DropDownList("Month", Vgic.Report.Web.Common.SelectListTool.Months, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtScore" class="col-xs-2 control-label">AC成绩</label>
+                <div class="col-xs-4">
+                    @Html.DropDownList("ACStatusId", Vgic.Report.Web.Common.SelectListTool.ACScores, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a id="acScoreSaveBtn" class="btn btn-primary">提 交</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        if ($("#IdCardNO").val().trim() != "") {
+            $("#IdCardNO").attr("disabled", true);
+            $("#IdCardNO").parent().append($("<input name='IdCardNO' type='hidden'>").val($("#IdCardNO").val().trim()));
+            $("#PositionCode").attr("disabled", true);
+        }
+        $("#acScoreSaveBtn").click(function () {
+            $.post("Save", $("#acSorceSaveForm").serialize(), function (data) {
+                if(data){
+                    if (data.Status) {
+                        search();
+                    } else {
+                        alert(data.ErrMsg);
+                    }
+                }
+            })
+        })
+    })
+</script>

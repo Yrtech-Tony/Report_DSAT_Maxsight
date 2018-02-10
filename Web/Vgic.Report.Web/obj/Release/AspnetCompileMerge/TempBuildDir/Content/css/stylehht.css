@@ -1,0 +1,147 @@
+﻿.menu h4 {
+    color: #535353;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 800;
+}
+
+.menu .english {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.menu .list-group-item {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.comm-table-div {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+    .comm-table-div table tr {
+        /*position: relative;*/
+    }
+
+    .comm-table-div .piao {
+        overflow: hidden;
+        background-color: #EAF0F9;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .comm-table-div .pzhan {
+    }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .comm-table-div .pzhan {
+    }
+}
+
+.comm-table-div .piao a {
+    color: #676767;
+}
+
+    .comm-table-div .piao a:hover {
+        color: #6A98D1;
+    }
+
+.comm-table-div .table-bordered > tbody > tr > th {
+    text-align: center;
+    color: #fff;
+    background-color: #7eaee8; /*rgb(34, 116, 172)*/
+}
+
+.comm-table-div .table > tbody > tr > td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.switch {
+    width: 115px;
+}
+
+    .switch a {
+        width: 115px;
+        height: 40px;
+        background: url(../images/switch.png) no-repeat center center;
+        position: absolute;
+        left: 15px;
+        cursor: pointer;
+    }
+
+
+/*验证提示*/
+.chkHint {
+    color: red;
+    display: none;
+}
+
+.error-msg, .format-error {
+    color: red;
+    display: none;
+}
+
+#pageUl a {
+    cursor: pointer;
+}
+
+.organizational-table {
+    text-align: center;
+}
+
+    .organizational-table th {
+        background-color: rgb(0,51,132);
+        color: white;
+        text-align: center;
+    }
+
+.position-table {
+}
+
+    .position-table tr td:first-child {
+        background-color: #a6a6a6;
+        color: white;
+        width: 120px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+.hold-table {
+    background-color: rgb(242,242,242);
+    font-size: 14px;
+}
+
+    .hold-table th {
+        background-color: rgb(79,129,189);
+        color: white;
+        margin-bottom: 10px;
+    }
+
+.highlight {
+    background: yellow;
+    color: red;
+}
+
+.prelight {
+    background: blue;
+    color: white;
+}
+
+.media-w {
+    min-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 15px;
+}
+.media-body i {
+    margin-left: 20px;
+}
+
+.media-list li.media {
+    margin: 20px auto;
+    border-bottom: #ccc dashed 1px;
+}

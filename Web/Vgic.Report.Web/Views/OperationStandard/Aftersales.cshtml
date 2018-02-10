@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/OperationStandard/_LayoutAftersales.cshtml";
+    ViewBag.Title = "经销商运营管理规范-售前";
+}
+
+<style>
+    .pd-li {
+        height: 250px;
+    }
+</style>
+
+<div class="col-md-9" style="display:inline-block">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="pd-li">
+            <h5 class="well"><a href="Aftersales?chapter=1#chapter1">第一章：运营管理</a></h5>
+            <ul>
+                <li><a href="Aftersales?chapter=1#section-1">经营管理</a></li>
+                <li><a href="Aftersales?chapter=1#section-2">服务流程管理</a></li>
+                <li><a href="Aftersales?chapter=12#section-3">服务营销管理</a></li>
+                <li><a href="Aftersales?chapter=12#section-4">客户满意度管理</a></li>
+            </ul>
+            <i class="glyphicon glyphicon-book"></i>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="pd-li">
+            <h5 class="well"><a href="Aftersales?chapter=2#chapter2">第二章：车间管理</a></h5>
+            <ul>
+                <li><a href="Aftersales?chapter=2#section-1">核心岗位工作</a></li>
+                <li><a href="Aftersales?chapter=2#section-2">环境与场地</a></li>
+                <li><a href="Aftersales?chapter=2#section-3">安全与环保</a></li>
+                <li><a href="Aftersales?chapter=2#section-4">设备与工具</a></li>
+                <li><a href="Aftersales?chapter=2#section-5">效率管理</a></li>
+                <li><a href="Aftersales?chapter=2#section-6">质量管理</a></li>
+                <li><a href="Aftersales?chapter=2#section-7">快修管理</a></li>
+            </ul>
+            <i class="glyphicon glyphicon-book"></i>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="pd-li">
+            <h5 class="well"><a href="Aftersales?chapter=3#chapter3">第三章：备件管理</a></h5>
+            <ul>
+                <li><a href="Aftersales?chapter=3#section-1">核心岗位工作</a></li>
+                <li><a href="Aftersales?chapter=3#section-2">备件基础知识</a></li>
+                <li><a href="Aftersales?chapter=3#section-3">备件仓库规划</a></li>
+                <li><a href="Aftersales?chapter=3#section-4">备件业务管理</a></li>
+                <li><a href="Aftersales?chapter=3#section-5">财务结算</a></li>
+            </ul>
+            <i class="glyphicon glyphicon-book"></i>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="pd-li">
+            <h5 class="well"><a href="Aftersales?chapter=4#chapter4">第四章：技术管理</a></h5>
+            <ul>
+                <li><a href="Aftersales?chapter=4#section-1">核心岗位工作</a></li>
+                <li><a href="Aftersales?chapter=4#section-2">技术信息管理</a></li>
+                <li><a href="Aftersales?chapter=4#section-3">技术支持与质量监控</a></li>
+                <li><a href="Aftersales?chapter=4#section-4">厂家技术支持的获取</a></li>
+                <li><a href="Aftersales?chapter=4#section-5">技术培训</a></li>
+            </ul>
+            <i class="glyphicon glyphicon-book"></i>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="pd-li">
+            <h5 class="well"><a href="Aftersales?chapter=5#chapter5">第五章：索赔管理</a></h5>
+            <ul>
+                <li><a href="Aftersales?chapter=5#section-1">索赔类型</a></li>
+                <li><a href="Aftersales?chapter=5#section-2">索赔政策</a></li>
+                <li><a href="Aftersales?chapter=5#section-3">索赔操作流程及要点</a></li>
+                <li><a href="Aftersales?chapter=5#section-4">索赔其他信息</a></li>
+            </ul>
+            <i class="glyphicon glyphicon-book"></i>
+        </div>
+    </div>
+   
+</div>
+
+<script>
+    $(function () {
+        $(".menu .list-group a.list-group-item").removeClass("list-group-active");
+        $(".menu .list-group a.list-group-item").eq(2).addClass("list-group-active");
+    })
+</script>

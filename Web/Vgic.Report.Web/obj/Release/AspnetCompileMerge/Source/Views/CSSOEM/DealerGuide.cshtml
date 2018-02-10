@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/CSSOEM/_CSSOEMLayout.cshtml";
+    ViewBag.Title = "销售满意度与终期关怀-指导手册";
+}
+@section scripts{
+    <script type="text/javascript" language="javascript">
+        var download_file = { iframe: undefined };
+        var countPerPage = @ViewBag.CountPerPage;
+        var pageCount = 1;
+        $(function() {
+            $(".menu .list-group a.list-group-item").eq(1).addClass("list-group-active");
+
+            //$("#btnDownloadReport").click(function(){
+            //    if (typeof (download_file.iframe) == "undefined") {
+            //        var iframe = document.createElement("iframe");
+            //        download_file.iframe = iframe;
+            //        document.body.appendChild(download_file.iframe);
+            //    }
+            //    var requestUrl = "DownloadFiles?areaCode={0}&groupCode={1}&shopCode={2}&year={3}&quarterormonth={4}&type=DealerGuide";
+            //    var area =  $("input[name='sArea'][checked='checked']").val();
+            //    var dGroup =  $("input[name='sDealerGroup[]'][checked='checked']").val();
+            //    download_file.iframe.src = stringFormat(requestUrl,
+            //       area?area:"",
+            //       dGroup?dGroup:"",
+            //       shopCode,
+            //       $("input[name='nYear'][checked='checked']").val(),
+            //       $("input[name='nDateSort'][checked='checked']").val()
+            //    );
+            //    download_file.iframe.style.display = "none";
+            //});
+
+
+            SearchShopFileInfo();
+        });
+
+        function SearchShopFileInfo(pageNo){
+            pageNo=pageNo?pageNo:1;
+            $.ajax("DealerGuideSearch", {
+                method: "GET",
+                type: 'json',
+                data:{pageNum:pageNo},
+                success: function (data) {
+                    SearchShopFileInfoSuccess(data);
+                    pageCount = Math.ceil(data.totalCount / countPerPage);
+                    initPages(pageNo, pageCount,SearchShopFileInfo);
+                }
+            });
+        }
+
+        function SearchShopFileInfoSuccess(data){
+            var table = $(".comm-table-div>table");
+            table.find("tr:not(:first-child)").remove();
+            var path = "DownloadFile?file=~/ReportFiles/CSSOEM/DealerGuide/";
+            $.each(data.shopInfoList, function (index, item) {
+                var oprations = "";
+                oprations = "<a href='"+path+item.FileName+"'>下载</a>";
+                var tr = $("<tr class='active'></tr>");
+                var col1 = $("<td></td>").html(oprations);
+                var col2 = $("<td></td>").html(item.FileName);
+                var col3 = $("<td></td>").html(ChangeDateFormat(item.UploadDate));
+                tr.append(col1).append(col2).append(col3);
+
+                table.append(tr);
+            });
+        }
+    </script>
+
+}
+<div id="container" class="col-md-10">
+    <div class="table-responsive comm-table-div">
+        <table class="table table-bordered table-hover" style="max-width:945px;">
+            <tr>
+                <th width="50">操作</th>
+                <th width="780">文件名</th>
+                <th width="100">上传时间</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="pagination" class="pull-right">
+        <ul id="pageUl"></ul>
+    </div>
+</div>
+

@@ -1,0 +1,4 @@
+SevenZip.SevenZipLibraryException: Can not load 7-zip library or internal COM error! Message: can not change the library path because the file "D:\D盘\workspace\项目整理\进行中的项目\Source\PC程序\大众报告平台_web\Vgic.Report.Web\bin\733z.dll" does not exist.
+   在 SevenZip.SevenZipLibraryManager.SetLibraryPath(String libraryPath)
+   在 SevenZip.SevenZipBase.SetLibraryPath(String libraryPath)
+   在 Vgic.Report.Web.Controllers.BaseController.SevenZipCompress(List`1 fileNames, String foler, String folderToZip, String zipedFile, Int32 level) 位置 D:\D盘\workspace\项目整理\进行中的项目\Source\PC程序\大众报告平台_web\Vgic.Report.Web\Controllers\BaseController.cs:行号 196

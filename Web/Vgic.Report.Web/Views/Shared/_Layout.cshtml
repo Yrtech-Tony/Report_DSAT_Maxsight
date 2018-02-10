@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/stylehht.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/comm.js"></script>
+    <script src="~/Scripts/bootstrap-paginator.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        function initPages(curPage, pageCount, search) {
+            $('#pageUl').empty();
+            if (pageCount == 0) return;
+            var options = {
+                bootstrapMajorVersion: 3, //版本
+                currentPage: curPage, //当前页数
+                totalPages: pageCount, //总页数
+                itemTexts: function (type, page, current) {
+                    switch (type) {
+                        case "first":
+                            return "首页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页";
+                        case "last":
+                            return "末页";
+                        case "page":
+                            return page;
+                    }
+                },
+                //点击事件，用于通过Ajax来刷新整个list列表
+                onPageClicked: function (event, originalEvent, type, page) {
+                    if (search) {
+                        search(page);
+                    } else {
+                        alert("onPageClicked事件没有设置查询方法");
+                    }
+                }
+            }
+            $('#pageUl').bootstrapPaginator(options);
+        }
+
+        $(function () {
+            //$('#btnForget').click(function () {
+            //    alert('如您忘记密码，请通过以下方式联系管理员进行重置：\r\n电话：010-64687240-7303\r\n邮箱：vgic_support@163.com\r\n\r\n');
+            //});
+
+            $(document).ajaxComplete(function (event, result, options) {
+                try {
+                    if (result.responseText.charAt(0) != '{')
+                        return;
+                    var result = $.parseJSON(result.responseText);
+                    if (result.Status == 401) {
+                        alert(result.Message, function () {
+                            window.location.href = "../Account/Login?ReturnUrl=" + result.ReturnUrl;
+                        });
+                    }
+                } catch (ex) {
+
+                }
+            });         
+        });        
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="logo pull-left">
+                <img src="~/Content/images/logo.png" alt="logo" />
+            </div>
+            <div class="nav pull-left">
+                <a href="../Home/Index"><i class="glyphicon glyphicon-home"></i> 首页 Home</a>
+            </div>           
+            <div class="login pull-right text-right">                
+                <span>Welcome，@Session["UserId"].ToString()</span>	<a href="~/Account/Logoff">退出</a> | <a id="btnForget" href="../Account/ChangePassword">修改密码</a>
+            </div>
+        </div>
+       
+    </div>
+    <div class="container">       
+        @RenderBody()
+    </div>
+    <div id="bottom">
+        <div class="container">
+            <p class="text-center">建议使用Chrome，火狐或IE10以上版本，若使用360浏览器请在极速模式下打开系统<br />如系统出现错误或异常，影响正常使用，请记录错误并通过以下方式通知管理员，以便及时为您解决问题！     工作时间：工作日9:00-18:00  /   电话：010-64687240-7303  /   邮箱：vgic_support@163.com</p>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+﻿@using Vgic.Report.Web.DSATReportServer;
+@{
+    Layout = "~/Views/BestPractice/_BestPracticeLayout.cshtml";
+    ViewBag.Title = "最佳案例分享";
+    var curYear = DateTime.Now.Year;
+    var curQuarter = 0;
+    int curMonth = DateTime.Now.Month;
+    if (curMonth % 3 == 0)
+    {
+        curQuarter = curMonth / 3;
+    }
+    else
+    {
+        curQuarter = curMonth / 3 + 1;
+    }
+}
+<style>
+    hr{
+        margin-top:5px;
+        margin-bottom:10px;
+    }
+</style>
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/crypto/crypto.js"></script>
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/hmac/hmac.js"></script>
+    <script type="text/javascript" src="~/Scripts/oss-upload-direct/lib/crypto1/sha1/sha1.js"></script>
+    <script src="~/Scripts/oss-upload-direct/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="~/Scripts/oss-upload-direct/lib/base64.js"></script>
+    <script src="~/Scripts/oss-upload-direct/upload.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        var videoOssBase = "DSATReport/Best/";
+        $(function () {
+            $(".menu .list-group a.list-group-item").removeClass("list-group-active");
+            $(".menu .list-group a.list-group-item").eq(1).addClass("list-group-active");
+
+            $('.i,.opens').click(function () {
+                $('.i').children("font").toggleClass("other");
+                $('#searchForm').slideToggle();
+                $('#searchForm').toggleClass('none');
+                $('.opens').slideToggle();
+                $('.opens').toggleClass('none');
+            });
+
+            var osspath = "DSATReport/Best/";
+            var uploader = init_uploader({
+                filepath: osspath,
+                uploaded: function (args) {
+                    $.post("VideoSave", {
+                        VideoFileName: args.fileName
+                    }, function () {
+                    });
+                },
+                complete: function () {
+                    Search();
+
+                    $("#postfiles").attr("disabled", false);
+                    $("#selectfiles").attr("disabled", false);
+
+                    $("#UploadModal #ossfile").empty();
+                    $("#UploadModal").modal('hide');
+                }
+            });
+
+            $("#postfiles").click(function () {
+                uploader.start();
+            });
+
+            $("#btnSearch,#btnCustomerSearch").click(function () {
+                Search();
+            }).trigger("click")
+        });
+
+        function Search(pageNo) {
+            pageNo = pageNo ? pageNo : 1;
+
+            $.ajax("Search", {
+                method: "GET",
+                data: {
+                    year: "",
+                    pageNum: pageNo,
+                    pageSize: 8,
+                    filename: $("#filename").val(),
+                    random: Math.random()
+                },
+                type: 'json',
+                success: function (data) {
+                    if (data.Status) {
+                        SearchSuccess(data);
+                        initPages(pageNo, data.PageCount, Search);
+                    } else {
+                        alert(data.ErrMsg);
+                    }
+                }
+            });
+        }
+
+        function SearchSuccess(data) {
+            $("#dataResult").empty();
+            $.each(data.ResultList, function (index, item) {
+                var videoPanel = $("#videoPanelTemplate").clone().removeClass("hidden");
+                videoPanel.find("#VoteCountTxt").html(item.VoteCount + "票");
+                videoPanel.find("#VoteCount").val(item.VoteCount);
+                videoPanel.find("#VideoFileName").val(item.VideoFileName);
+                videoPanel.find("#FileId").val(item.FileId);
+                var title = item.VideoFileName.substr(0, item.VideoFileName.lastIndexOf("."));
+                var subTitle = title;
+                if (title.length > 18) {
+                    subTitle = title.substr(0, 18) + "...";
+                }
+                videoPanel.find(".title").html(subTitle).attr("title",title);
+
+                var url = "Detail?" + jQuery.param(item);
+                videoPanel.find("#videoshow").attr("href", url);
+
+                if (item.VoteChk) {
+                    videoPanel.find("#Vote").attr("disabled", false).click(function () { vote(this) });
+                } else {
+                    videoPanel.find("#Vote").attr("disabled", true);
+                }                
+                videoPanel.find("#Download").click(function () { download(this) });               
+                
+
+                $("#dataResult").append(videoPanel);
+            });
+        }
+
+        function addVideo() {
+            $("#UploadModal").modal('show');
+        }
+
+        function vote(obj) {
+            $(obj).attr("disabled", true);
+            var id = $(obj).parents(".thumbnail").find("#FileId").val();
+            $.post("Vote", { id: id }, function (data) {
+                if (data.Status) {
+                    var curPage = parseInt($("#pageUl li.active a").html());
+                    Search(curPage);
+                } else {
+                    alert(data.ErrMsg);
+                }
+            })
+        }
+        function download(obj) {
+            var fileName = $(obj).parents(".thumbnail").find("#VideoFileName").val();
+            var download = "DownloadOSSFile?filename=" + videoOssBase+fileName;
+            window.location.href = download;
+        }
+    </script>
+}
+
+<div id="UploadModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">上传最佳案例视频</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                <div id="upload-container" class="container-fluid" style="margin:0;padding:0">
+                    <div id="ossfile"></div>
+                    <div id="console"></div>
+                </div>
+                <div class="container-fluid pull-right">
+                    <a id="selectfiles" href="javascript:void(0);" class='btn btn-default btn-sm'>选择文件</a>
+                    <a id="postfiles" href="javascript:void(0);" class='btn btn-primary btn-sm'>开始上传</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="PlayModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">播放最佳案例视频</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                <video src="" style="width: 560px; background-color: black" codecs="avc1.42E01E, mp4a.40.2" controls autoplay="autoplay" preload="Auto"></video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-10 col-sm-10 col-md-10">
+    <div class="container-fluid">
+        <form class="form-inline pull-left mb15">
+            <div class="form-group">
+                <input type="text" class="form-control" name="filename" id="filename" placeholder="关键字" value="">
+            </div>
+            <button type="button" id="btnCustomerSearch" class="btn btn-default">搜 索</button>
+        </form>
+
+        <div class="pull-right">
+            @*@if(ViewBag.UserId == "QSP")*@
+            {
+                <a href="javascript:addVideo()" class="btn btn-primary ">上传视频</a>
+            }            
+        </div>
+    </div>
+    <hr />
+    <div id="dataResult" class="row">
+
+    </div>
+    <div id="pagination" class="pull-right">
+        <ul id="pageUl"></ul>
+    </div>
+
+    <div id="videoPanelTemplate" class="col-md-3 hidden">
+        <div class="thumbnail ">
+            <input id="FileId" type="hidden" />
+            <input id="VideoFileName" type="hidden" />
+            <input id="VoteCount" type="hidden" />
+            <a id="videoshow">
+                <div class="v-img">
+                    <img class="img-responsive" src="../../content/images/v-img.png" />
+                </div>
+                <h5 class="title"></h5>
+            </a>
+            <div class="caption text-center">
+                <span id="VoteCountTxt" class="text-info"></span>
+                &nbsp;&nbsp;
+                <button id="Vote" class="btn btn-default btn-sm" role="button">
+                    <i class="glyphicon glyphicon-thumbs-up text-info"></i> 投票
+                </button>
+                <button id="Download" class="btn btn-default btn-sm" role="button">
+                    <i class="glyphicon glyphicon-download text-info"></i> 下载
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

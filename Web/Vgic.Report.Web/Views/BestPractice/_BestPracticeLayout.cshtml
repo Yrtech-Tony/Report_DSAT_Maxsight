@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "最佳案例分享";
+    var curYear = DateTime.Now.Year;
+    var curMonth = DateTime.Now.Month;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <ul class="list-group">
+                <a class="list-group-item"><h4>最佳案例分享</h4><h4 class="english">Best Practice</h4></a>
+                <a href="Video" class="list-group-item">视频<br><span class="english">Video</span></a>
+                <a href="Document" class="list-group-item">文件<br><span class="english">Document</span></a>
+                <a href="Casebook" class="list-group-item">案例手册<br><span class="english">Casebook</span></a>
+            </ul>
+        </div>
+
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</div>

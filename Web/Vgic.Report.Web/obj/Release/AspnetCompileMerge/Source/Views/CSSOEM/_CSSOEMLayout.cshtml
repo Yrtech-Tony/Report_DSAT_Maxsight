@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var curYear = DateTime.Now.Year;
+    var curMonth = DateTime.Now.Month;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 menu">
+            <ul class="list-group">
+
+                <a class="list-group-item"><h4>销售满意度及中期关怀</h4><h4 class="english">CSS+OEM Care</h4></a>
+                <a href="DealerGuide" class="list-group-item">指导手册<br><span class="english">Guideline</span></a>
+                <a href="QuarterlyReport" class="list-group-item">季度报告<br><span class="english">Quarterly Report</span></a>
+                <a href="MonthReport" class="list-group-item">月度报告<br><span class="english">Monthly Report</span></a>
+                <a href="Complaint" class="list-group-item">申诉结果反馈<br><span class="english">Appeal Feedback</span></a>
+            </ul>
+        </div>
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</div>
